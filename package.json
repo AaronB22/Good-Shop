@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "heroku-prebuild":"cd ./client && npm install",
-    "build":"cd ./client && npm run build"
+    "heroku-prebuild": "cd ./client && npm install",
+    "build": "cd ./client && npm run build",
+    "server": "nodemon server.js",
+    "client": "cd client && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "repository": {
     "type": "git",
@@ -21,7 +24,11 @@
   "homepage": "https://github.com/AaronB22/ECOM-React-Site#readme",
   "dependencies": {
     "body-parser": "^1.19.2",
+    "dotenv": "^14.2.0",
     "express.js": "^1.0.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1"
   }
 }
