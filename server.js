@@ -2,7 +2,7 @@ const express = require('express');
 const root = require('path').join(__dirname, 'client/build')
 const bodyParser = require('body-parser');
 
-
+//server set up
 const app = express();
 const port = process.env.PORT || 5000;
 
