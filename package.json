@@ -1,0 +1,24 @@
+{
+  "name": "ecom-react-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronB22/ECOM-React-Site.git"
+  },
+  "author": "Aaron Bailey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AaronB22/ECOM-React-Site/issues"
+  },
+  "homepage": "https://github.com/AaronB22/ECOM-React-Site#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express.js": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
