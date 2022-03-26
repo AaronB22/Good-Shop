@@ -5,6 +5,8 @@ import {
     Carousel
     } from "react-bootstrap";
 import './Home.scss'
+import Product from "../../Components/Product/Product";
+
 
 const Home = () => {
     return (
@@ -29,6 +31,7 @@ const Home = () => {
                     />
                 </Carousel.Item>
             </Carousel>
+            <Product/>
         </div>
       );
 }
