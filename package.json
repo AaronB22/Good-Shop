@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/AaronB22/ECOM-React-Site#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
     "dotenv": "^14.3.2",
     "express.js": "^1.0.0",

@@ -18,8 +18,8 @@ app.use(express.static(root));
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/ecom',  {
   useNewUrlParser: true,
 });
-
-app.use(require('./database/apiRoutes'))
+app.use(require('./database/apiRoutesGet'))
+app.use(require('./database/apiRoutesPost'))
 
 app.get("*", (req, res) => {
   res.sendFile('index.html', { root });
