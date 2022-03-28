@@ -2,11 +2,13 @@ import './Login.scss'
 import GoogleLogin from "react-google-login";
 import {Container, Card, Form, Button} from "react-bootstrap";
 import { NavBarContext } from '../../utils/navBarStatus';
+import { UserContext } from '../../utils/UserContext';
 import { useContext, useEffect, useState } from 'react';
 
 const Login = () => {
     const [loaded, setLoaded]= useState(false)
-    const {navBarStatus, setNavBarStatus}= useContext(NavBarContext)
+    const {navBarStatus, setNavBarStatus}= useContext(NavBarContext);
+    const {userInfo, setUserInfo}= useContext(UserContext);
     const [email, setEmail]=useState()
     const [password, setPassword]= useState()
     useEffect(()=>{
@@ -21,24 +23,29 @@ const Login = () => {
         console.log(result)
     }
 
-    const handleLogin=()=>{
+    const handleLogin=async()=>{
         const userReq={
             "email": email.trim(),
             "password": password.trim()
         }
-        console.log(userReq)
-        fetch('/api/validateUser',{
+        
+       const res= await fetch('/api/validateUser',{
             method: "POST",
             body: JSON.stringify(userReq),
             headers: {
                 Accept: 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
               }
-        }).then((res)=>{
-            return res.json()
-        }).then(data=>{
-            console.log(data)
         })
+        console.log(res)
+      
+      if(res.status===200){
+          const data= await res.json()
+          console.log(data)
+          setUserInfo(data)
+          window.localStorage.setItem('userData', JSON.stringify(data))
+      }
+        
     }
 
     if(loaded){

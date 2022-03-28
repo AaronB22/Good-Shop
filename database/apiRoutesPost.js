@@ -22,8 +22,12 @@ router.post('/api/createCategory',({body},res)=>{
 router.post('/api/newUser',async({body},res)=>{
     try{
         const newUser= body;
-        newUser.password= await bcrypt.hash(body.password, 10)
-        console.log(newUser.password)
+        if(newUser.password){
+            newUser.password= await bcrypt.hash(body.password, 10)
+        }
+        if(newUser.googleId){
+            newUser.googleId= await bcrypt.hash(body.googleId, 10)
+        }
        User.insertMany(newUser)
             .then(x=>{
                 res.json(x)

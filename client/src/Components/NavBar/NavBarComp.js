@@ -1,10 +1,18 @@
 import { Navbar,Form} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './NvB.scss'
+import { UserContext } from '../../utils/UserContext';
 import 'bootstrap/dist/css/bootstrap.css'
+import { useContext, useEffect, useState } from 'react';
 
 const NavBarComp = () => {
-
+    const {userInfo, setUserInfo}= useContext(UserContext);
+    const [navName,setNavName]=useState(' Log In')
+    useEffect(()=>{
+        if(userInfo){
+            setNavName(userInfo.name)
+        }
+    },[userInfo])
     return ( 
     <Navbar expand='lg' className="NvBar">
        <Navbar.Brand className='header' onClick={(x)=>{
@@ -26,7 +34,7 @@ const NavBarComp = () => {
                 to='/login'
                 className="login"
                 >
-                Log In
+                {navName}
                 </Link>    
             </Navbar.Brand> 
             <Navbar.Brand>Cart</Navbar.Brand> 

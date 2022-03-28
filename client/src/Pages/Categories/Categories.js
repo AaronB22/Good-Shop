@@ -2,7 +2,7 @@ import { Card, Container} from "react-bootstrap";
 import Category from "../../Components/Category/Category";
 import './Categories.scss';
 import { NavBarContext } from '../../utils/navBarStatus';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 const placeholderArray=[
     {
@@ -21,7 +21,10 @@ const placeholderArray=[
     
 const Categories = () => {
     const {setNavBarStatus}= useContext(NavBarContext)
-    setNavBarStatus('open')
+    useEffect(()=>{
+        setNavBarStatus('open')
+
+    })
     return (
         <>
             <Container className="CatCont">
