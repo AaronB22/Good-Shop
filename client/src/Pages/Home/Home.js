@@ -10,7 +10,7 @@ import Product from "../../Components/Product/Product";
 
 const Home = () => {
     return (
-        <div className="homeBlock">
+        <div>
             <Carousel className="car-block">
                 <Carousel.Item>
                 <img

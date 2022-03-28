@@ -2,16 +2,20 @@ import Routers from './Router';
 import { BrowserRouter as Router} from 'react-router-dom'
 import NavBarComp from './Components/NavBar/NavBarComp';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.scss'
 
 function App() {
   return (
-    <div className="App">
+    <body>
       <Router>
         <NavBarComp/>
-        <Routers/>
+        <div className='App'>
+          <Routers/>
+
+        </div>
       </Router>
       
-    </div>
+    </body>
   );
 }
 

@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/ecom',  {
   useNewUrlParser: true,
 });
 
+app.use(require('./database/apiRoutes'))
 
 app.get("*", (req, res) => {
   res.sendFile('index.html', { root });
