@@ -5,10 +5,19 @@ import {
     Carousel
     } from "react-bootstrap";
 import './Home.scss'
+import Product from "../../Components/Product/Product";
+import { NavBarContext } from '../../utils/navBarStatus';
+import { useContext, useEffect } from 'react';
+
 
 const Home = () => {
+    const {setNavBarStatus}= useContext(NavBarContext)
+    useEffect(()=>{
+        setNavBarStatus('open')
+
+    })
     return (
-        <div className="homeBlock">
+        <div>
             <Carousel className="car-block">
                 <Carousel.Item>
                 <img
@@ -29,6 +38,7 @@ const Home = () => {
                     />
                 </Carousel.Item>
             </Carousel>
+            <Product/>
         </div>
       );
 }
