@@ -3,10 +3,12 @@ import GoogleLogin from "react-google-login";
 import {Container, Card, Form, Button} from "react-bootstrap";
 import { NavBarContext } from '../../utils/navBarStatus';
 import { UserContext } from '../../utils/UserContext';
+import { LogInAuthContext } from '../../utils/LogInAuth';
 import { useContext, useEffect, useState } from 'react';
 
 const Login = () => {
     const [loaded, setLoaded]= useState(false)
+    const {logInStatus, setLogInStatus} = useContext(LogInAuthContext);
     const {navBarStatus, setNavBarStatus}= useContext(NavBarContext);
     const {userInfo, setUserInfo}= useContext(UserContext);
     const [email, setEmail]=useState()
@@ -37,6 +39,7 @@ const Login = () => {
             const data= await res.json()
             console.log(data)
             setUserInfo(data)
+            setLogInStatus(true)
             window.localStorage.setItem('userData', JSON.stringify(data))
             window.location.assign('/')
         }
