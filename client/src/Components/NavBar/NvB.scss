@@ -6,6 +6,10 @@
     margin-right: auto;
 }
 
+.customFont{
+    font-size: 1.5rem;
+}
+
 .header{
     padding-right: 3rem;
 }
@@ -24,7 +28,15 @@
     margin-left: auto;
 }
 
-.login{
-    color: black;
-    border: none;
+
+
+.accPopUp{
+    position: absolute;
 }
+
+//removes arrow from dropdown button in the React-Bootstrap component
+.dropdown-toggle::after {
+    display: none !important; 
+  }
+
+

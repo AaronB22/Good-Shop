@@ -5,17 +5,20 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.scss'
 import { NavBarContext } from './utils/navBarStatus';
 import { UserContext } from './utils/UserContext';
+import { LogInAuthContext } from './utils/LogInAuth';
 import { useContext, useEffect, useState } from 'react';
 
 function App() {
   const [navBarStatus, setNavBarStatus] = useState('open')
   const [userInfo, setUserInfo]= useState()
+  const [logInStatus, setLogInStatus]=useState()
   useEffect(()=>{
     const userData= window.localStorage.getItem('userData');
     if(userData){
       const parsedUserData= JSON.parse(userData);
         if(parsedUserData){
           setUserInfo(parsedUserData)
+          setLogInStatus(true)
         }
     }
   },[])
@@ -25,6 +28,7 @@ function App() {
     <body>
       <UserContext.Provider value={{userInfo, setUserInfo}} >
       <NavBarContext.Provider value={{navBarStatus, setNavBarStatus}}>
+      <LogInAuthContext.Provider value={{logInStatus, setLogInStatus}}>
         <Router>
           {(()=>{
           if(navBarStatus==='open'){
@@ -38,7 +42,7 @@ function App() {
 
           </div>
         </Router>
-
+        </LogInAuthContext.Provider>
       </NavBarContext.Provider>
       </UserContext.Provider>
     </body>
