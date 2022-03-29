@@ -19,8 +19,27 @@ const Login = () => {
         console.log('FAIL TO GET GOOGLE DATA')
         alert(result)
     }
-    const handleGoogleLogin=(result)=>{
-        console.log(result)
+    const handleGoogleLogin=async(data)=>{
+        const reqUser={
+            "email":data.profileObj.email,
+            "name":data.profileObj.name,
+            "googleToken":data.tokenId
+        }
+        const res= await fetch('/api/googlevalidate',{
+            method: "POST",
+            body: JSON.stringify(reqUser),
+            headers: {
+                Accept: 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+              }
+        })
+        if(res.status===200){
+            const data= await res.json()
+            console.log(data)
+            setUserInfo(data)
+            window.localStorage.setItem('userData', JSON.stringify(data))
+            window.location.assign('/')
+        }
     }
 
     const handleLogin=async()=>{
@@ -100,7 +119,9 @@ const Login = () => {
                             background:'white',
                             color:'black',
                             border:'black 3xp solid'
-                     }}>
+                     }}
+                     onClick={()=>{window.location.assign('/createAccount')}}
+                     >
                         Create account
                     </Button>
                 </Container>

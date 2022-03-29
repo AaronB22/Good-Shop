@@ -13,7 +13,7 @@ const userSchema= new Schema({
     password:{
         type:String
     },
-    googleId:{
+    googleToken:{
         type:String
     }
 })
