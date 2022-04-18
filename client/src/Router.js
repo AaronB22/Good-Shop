@@ -3,6 +3,8 @@ import Home from './Pages/Home/Home';
 import Categories from './Pages/Categories/Categories'
 import Login from './Pages/Login/Login';
 import CreateAccount from './Pages/CreateAccount/CreateAccount';
+import ProductList from './Pages/ProductList/ProductList';
+import UploadProduct from './Pages/UploadProduct/UploadProduct';
 
 const Routers = () => {
     return ( 
@@ -12,6 +14,8 @@ const Routers = () => {
             <Route exact path='/categories' element={<Categories/>} />
             <Route exact path='/login' element={<Login/>} />
             <Route exact path='/createAccount' element={<CreateAccount/>}/>
+            <Route exact path='/productList/:category' element={<ProductList/>}/>
+            <Route exact path='/admin/upload' element={<UploadProduct/>}/>
             <Route exact path='/' element={<Home/>} />
         </Routes>
     </> );

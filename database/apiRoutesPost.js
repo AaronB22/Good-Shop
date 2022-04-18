@@ -128,5 +128,11 @@ router.post('/api/googlevalidate', async({body}, res)=>{
     }
 })
 
+router.post('/api/newProduct', async({body}, res)=>{
+    console.log(body)
+   await Product.insertMany(body)
+    res.status(200)
+})
+
 
 module.exports = router
