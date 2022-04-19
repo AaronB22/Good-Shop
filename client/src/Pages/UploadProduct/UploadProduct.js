@@ -8,16 +8,28 @@ const UploadProduct = () => {
     const [price, setPrice]= useState()
     const uploadImg=async(e)=>{
         console.log(e.target.files[0])
-        console.log(e.target.files)
-        console.log(e.target.files[0].name)
         const imgfile= e.target.files[0]
+
+
+
+        
         setImg(URL.createObjectURL(imgfile))
+        const formData = new FormData();
+        console.log(e.target.files[0])
+        await formData.append('photo', e.target.files[0])
         const newProduct={
             name:'test',
             description:'test',
             category:'test',
-            img:URL.createObjectURL(imgfile),
+            img: formData,
             price:10
+        }
+        console.log(newProduct)
+        // console.log(newProduct.img)
+        console.log(formData)
+        //URL.createObjectURL(imgfile)
+        for (var key of formData.entries()) {
+            console.log(key[0] + ', ' + key[1]);
         }
         const res= await fetch('/api/newProduct',{
             method: "POST",
@@ -25,7 +37,8 @@ const UploadProduct = () => {
             headers: {
                 Accept: 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
-              }})
+              }
+            })
         console.log(res)
     }
     return ( 

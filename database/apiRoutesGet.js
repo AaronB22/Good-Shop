@@ -13,7 +13,16 @@ const bcrypt = require('bcrypt');
 // })
 
 
-
+router.get('/api/getAllProdsByCat/:cat', async (req, res)=>{
+    try{
+        const q= await Product.find({}).where('category').equals('test')
+        console.log(q)
+        res.json(q)
+    }
+    catch(err){
+        throw err
+    }
+})
 
 
 

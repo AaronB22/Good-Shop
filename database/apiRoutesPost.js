@@ -3,6 +3,9 @@ const Product= require('./models/Product')
 const Category= require('./models/Category')
 const User= require('./models/User')
 const bcrypt = require('bcrypt');
+const grid = require('gridfs-stream');
+const fs = require('fs');
+var multer = require('multer');
 
 
 router.post('/api/createNewProduct',  ({body},res)=>{
@@ -130,9 +133,29 @@ router.post('/api/googlevalidate', async({body}, res)=>{
 
 router.post('/api/newProduct', async({body}, res)=>{
     console.log(body)
+    // console.log(body.img)
+    const formData= new FormData()
+    formData.append('img', body.img)
+    for (var key of formData.entries()) {
+        console.log(key[0] + ', ' + key[1]);
+    }
+    // const r= await storage(body.img)
+
    await Product.insertMany(body)
     res.status(200)
 })
+
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+  
+var upload = multer({ storage: storage });
 
 
 module.exports = router
