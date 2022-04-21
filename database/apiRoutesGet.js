@@ -3,6 +3,7 @@ const User= require('./models/User');
 const Product= require('./models/Product')
 const bcrypt = require('bcrypt');
 
+
 // router.get('/api/userlogin', async(req, res)=>{
 //     try{
        
@@ -14,8 +15,10 @@ const bcrypt = require('bcrypt');
 
 
 router.get('/api/getAllProdsByCat/:cat', async (req, res)=>{
+    const params= req.params.cat
+    console.log(params)
     try{
-        const q= await Product.find({}).where('category').equals('test')
+        const q= await Product.find({}).where('category').equals(params)
         console.log(q)
         res.json(q)
     }

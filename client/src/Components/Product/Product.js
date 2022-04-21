@@ -3,56 +3,75 @@ import {
     Card,
     Container,
     Button,
+    Row,
+    Col,
     } from "react-bootstrap";
 import './Product.scss'
 
-const Product = () => {
-    const [product, setProduct]= useState();
-    const [isLoaded, setLoaded]= useState()
-    useEffect(()=>{
-        fetch('/api/getAllProdsByCat/:test')
-        .then((res)=>{return(res.json())}).then((data)=>{
-            console.log(data)
-            setProduct(data[0])
-            setLoaded(true)
-        })
-    },[])
-
-    if(isLoaded){
+const Product = (props) => {
+    console.log(props)
+    console.log(props.product.name)
         return (
             <>
                 <Card className="prodcard">
-                    <Card.Header>
-                       {product.name}
-                    </Card.Header>
-                    <Container>
-                        {/* <img
-                        className="prodImg"
-                        src={require('../../assests/phone.jpg')}
-                        /> */}
-                         {/* <img
-                        className="prodImg"
-                        src={require(product.img)}
-                        /> */}
+                    <Container className= "contImg">
+                    {(()=>{
+                        try{
+                            return(
+                                <img
+                                className="prodImg"
+                                src={require(props.product.img)}
+                                />
+                            )
+                        }
+                        catch(err){
+                            return(
+                                <img
+                                className="prodImg"
+                                src={require('../../assests/phone.jpg')}
+                                />
+                            )
+                        }
+
+                    })()}
                     </Container>
-                    <Card.Text>
-                        $$$$
+                    <Card.Text className="priceCard">
+                                ${props.product.price}
+                            </Card.Text>
+                    <Card.Text className='prodHeader'>
+                       {props.product.name}
                     </Card.Text>
-                    <Button className="infoBtn">
-                        Info
+                    {/* <Card.Text className="prodDes">
+                        {props.product.description}
+                    </Card.Text> */}
+                        <Container className="ratingCont">
+                        <img
+                                className="prodRate"
+                                src={require('../../assests/star.png')}
+                            />
+                        </Container>
+           
+                    {/* <Container>
+                        <Row>
+                            <Col>
+                            <Card.Text>
+                                ${props.product.price}
+                            </Card.Text>
+                            </Col>
+                            <Col>
+                            <img
+                                className="prodRate"
+                                src={require('../../assests/star.png')}
+                            />
+                            </Col>
+                        </Row>
+                    </Container> */}
+                    <Button className="cartBtn">
+                        Add to Cart
                     </Button>
                 </Card>
             </>
           );
-
-    }
-    if(!isLoaded){
-        return(
-            <h1>
-                loading...
-            </h1>
-        )
-    }
 }
  
 export default Product;
