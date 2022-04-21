@@ -5,6 +5,7 @@ const User= require('./models/User')
 const bcrypt = require('bcrypt');
 const grid = require('gridfs-stream');
 const fs = require('fs');
+const formidable = require('express-formidable');
 var multer = require('multer');
 
 
@@ -133,29 +134,17 @@ router.post('/api/googlevalidate', async({body}, res)=>{
 
 router.post('/api/newProduct', async({body}, res)=>{
     console.log(body)
-    // console.log(body.img)
-    const formData= new FormData()
-    formData.append('img', body.img)
-    for (var key of formData.entries()) {
-        console.log(key[0] + ', ' + key[1]);
-    }
-    // const r= await storage(body.img)
+    try{
+        await Product.insertMany(body)
+        console.log('done')
+         res.status(200)
 
-   await Product.insertMany(body)
-    res.status(200)
+    }
+    catch(err){
+        console.log(err)
+        res.status(500)
+    }
 })
-
-
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-  
-var upload = multer({ storage: storage });
 
 
 module.exports = router

@@ -1,35 +1,22 @@
 import { useState } from "react";
-import {Container, Card, Form, Button, Alert} from "react-bootstrap";
+import { FilePond } from "filepond";
+import {Container, Card, Form, Button, Alert, Dropdown} from "react-bootstrap";
 
 const UploadProduct = () => {
     const [img, setImg]= useState(require('../../assests/phone.jpg'))
     const [name, setName]= useState()
-    const [category, setCategory]= useState();
+    const [category, setCategory]= useState('Choose Category...');
+    const [description, setDescription]= useState()
     const [price, setPrice]= useState()
-    const uploadImg=async(e)=>{
-        console.log(e.target.files[0])
-        const imgfile= e.target.files[0]
+    const uploadNewProduct=async(e)=>{
 
 
-
-        
-        setImg(URL.createObjectURL(imgfile))
-        const formData = new FormData();
-        console.log(e.target.files[0])
-        await formData.append('photo', e.target.files[0])
         const newProduct={
-            name:'test',
-            description:'test',
-            category:'test',
-            img: formData,
-            price:10
-        }
-        console.log(newProduct)
-        // console.log(newProduct.img)
-        console.log(formData)
-        //URL.createObjectURL(imgfile)
-        for (var key of formData.entries()) {
-            console.log(key[0] + ', ' + key[1]);
+            name:name,
+            description:description,
+            category:category,
+            img: img,
+            price:price
         }
         const res= await fetch('/api/newProduct',{
             method: "POST",
@@ -64,15 +51,59 @@ const UploadProduct = () => {
                             setCategory(x.target.value)
                     }}>
                     <Form.Label>Category</Form.Label>
+                    {/* <Form.Control/> */}
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
+                            width:'100%',
+                            background:'white',
+                            borderRadius:'2px',
+                            borderColor: 'lightgrey',
+                            color: 'black',
+                            textAlign:'left',
+                        }}
+                        >
+                            {category}
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu
+                            onClick={(x)=>setCategory(x.target.firstChild.data)}
+                        >
+                            <Dropdown.Item href="#/action-1">Phone</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">LapTop</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Tablet</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </Form.Group>
+                <Form.Group className="mb-3" onChange={(x)=>{
+                            setDescription(x.target.value)
+                    }}>
+                    <Form.Label>Description</Form.Label>
                     <Form.Control/>
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                     <input type='file' onChange={uploadImg}/>
+                <Form.Group className="mb-3" onChange={(x)=>{
+                            setImg(x.target.value)
+                    }}>
+                    <Form.Label>Image URL</Form.Label>
+                    <Form.Control/>
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                </Form.Group>
+                     {/* <input type='file' onChange={uploadImg}/> */}
             </Form>
-                <img
+                {/* <img
                     src={img}
-                />
+                /> */}
+            <Button style={{
+                width:'50%',
+            }}
+            onClick={uploadNewProduct}
+            >
+                Submit
+            </Button>
         
         
         </>
