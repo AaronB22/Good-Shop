@@ -9,8 +9,7 @@ import {
 import './Product.scss'
 
 const Product = (props) => {
-    console.log(props)
-    console.log(props.product.name)
+
         return (
             <>
                 <Card className="prodcard">
