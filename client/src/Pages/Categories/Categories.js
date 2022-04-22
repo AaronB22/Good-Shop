@@ -1,4 +1,4 @@
-import { Card, Container} from "react-bootstrap";
+import { Card, Container, Row} from "react-bootstrap";
 import Category from "../../Components/Category/Category";
 import './Categories.scss';
 import { NavBarContext } from '../../utils/navBarStatus';
@@ -29,9 +29,20 @@ const Categories = () => {
         <>
             <Container className="CatCont">
                 <h1 className="CatHeader">Portable Devices</h1>
-                <Category
-                props={placeholderArray}
-                />
+                <Container>
+                    <Row>
+                    {placeholderArray.map(x=>{
+                    
+                    return(
+                        <Category 
+                        props={x} 
+                        />
+                    )
+                })}
+
+                    </Row>
+
+                </Container>
 
             </Container>
 

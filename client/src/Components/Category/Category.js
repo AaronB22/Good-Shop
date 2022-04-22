@@ -4,34 +4,30 @@ import "./Category.scss"
 const Category = (props) => {
     const categories= props.props;
     console.log(categories)
-    categories.map(x=>{
-        console.log(x)
-    })
+
     return ( 
-        <>
-        <Container>
-            <Row>
-                {categories.map(x=>{
-                    
-                    return(
-                        <Col>
-                            <Card className="catBlock">
-                                <img
-                                className="catImg"
-                                src={x.img}
-                                />
-                                <div className="hoverCat" >
-                                <div className="catTitle">
-                                    {x.category}
-                                </div>
-                                </div>
-                            </Card>
-                        </Col>
-                    )
-                })}
-            </Row>
-        </Container>
-        </>
+        
+       
+            <Col 
+            onClick={(e)=>{
+                console.log(e.target.innerText)
+                window.location.assign('/productList/'+e.target.innerText)
+            }}
+            >
+                <Card className="catBlock">
+                    <img
+                    className="catImg"
+                    src={props.props.img}
+                    />
+                    <div className="hoverCat" >
+                    <div className="catTitle">
+                        {props.props.category} 
+                    </div>
+                    </div>
+                </Card>
+            </Col>
+           
+    
      );
 }
  
