@@ -3,3 +3,25 @@
     text-align: center;
     font-weight: 500;
 }
+.FilterBar{
+    position: absolute;
+}
+
+.rangeFilter{
+    margin-right: auto;
+}
+
+.FilterTitle{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.filterPrice{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.8rem;
+}
+
+.priceNumber{
+    font-weight: 600;
+}

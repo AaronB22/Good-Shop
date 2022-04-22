@@ -11,7 +11,6 @@ import './Product.scss'
 
 const Product = (props) => {
     const tags=props.product.tags
-    console.log(props)
         return (
             <>
                 <Card className="prodcard" style={{
