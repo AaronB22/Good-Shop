@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Tags from '../Tags/Tags'
 import { 
     Card,
     Container,
@@ -9,10 +10,14 @@ import {
 import './Product.scss'
 
 const Product = (props) => {
-
+    const tags=props.product.tags
+    console.log(props)
         return (
             <>
-                <Card className="prodcard">
+                <Card className="prodcard" style={{
+                    // borderBlockColor:'white',
+                    // borderColor:'white',
+                }}>
                     <Container className= "contImg">
                     {(()=>{
                         try{
@@ -49,22 +54,17 @@ const Product = (props) => {
                                 src={require('../../assests/star.png')}
                             />
                         </Container>
-           
-                    {/* <Container>
-                        <Row>
-                            <Col>
-                            <Card.Text>
-                                ${props.product.price}
-                            </Card.Text>
-                            </Col>
-                            <Col>
-                            <img
-                                className="prodRate"
-                                src={require('../../assests/star.png')}
-                            />
-                            </Col>
-                        </Row>
-                    </Container> */}
+                        <Container className="TagCont">
+                           
+                        {tags.map(x=>{
+                            return(
+                                <Tags
+                                    tag={x}
+                                />
+                            )
+                        })}
+                        </Container>
+            
                     <Button className="cartBtn">
                         Add to Cart
                     </Button>

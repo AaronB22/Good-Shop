@@ -1,7 +1,7 @@
 .prodcard{
     width: 20rem;
     height: 30rem;
-    margin: 3rem;
+    margin-top: 3rem;
 }
 
 .cartBtn{
@@ -47,4 +47,10 @@
 
 .ratingCont{
   margin-top: auto;
+}
+
+.TagCont{
+  display: flex;
+  margin-bottom: 5px;
+  flex-direction: row;
 }
