@@ -29,6 +29,11 @@ const Home = () => {
     useEffect(()=>{
         setNavBarStatus('open')
     })
+    const handleWindowChange=(e)=>{
+        console.log(e.target.id)
+        window.location.assign('/productList/'+e.target.id)
+    }
+
     if(loaded){
         return (
             <div>
@@ -37,18 +42,24 @@ const Home = () => {
                     <img
                         src={require('../../assests/laptop.jpg')}
                         className='imgHome'
+                        onClick={handleWindowChange}
+                        id='laptop'
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                     <img
                         src={require('../../assests/tablet.jpg')}
                         className='imgHome'
+                        onClick={handleWindowChange}
+                        id='tablet'
                         />
                     </Carousel.Item>
                     <Carousel.Item>
                         <img
                         src={require('../../assests/phone.jpg')}
                         className='imgHome'
+                        onClick={handleWindowChange}
+                        id='phone'
                         />
                     </Carousel.Item>
                 </Carousel>

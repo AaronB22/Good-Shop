@@ -66,6 +66,7 @@ const Login = () => {
           console.log(data)
           setUserInfo(data)
           window.localStorage.setItem('userData', JSON.stringify(data))
+          window.location.assign('/')
       }
         
     }

@@ -15,7 +15,7 @@ const ProductList = () => {
         setPriceNumber(x.target.value)
     }
     useEffect(()=>{
-        fetch('/api/getAllProdsByCat/Phone')
+        fetch('/api/getAllProdsByCat/'+category)
         .then((res)=>{return(res.json())}).then((data)=>{
             setProducts(data)
             setLoaded(true)
