@@ -106,6 +106,7 @@ const NavBarComp = () => {
             <Navbar.Brand>
                 <FontAwesomeIcon icon={faCartShopping}
                     className="cart"
+                    onClick={()=>window.location.assign('/mycart')}
                 />
             </Navbar.Brand> 
     </Navbar>

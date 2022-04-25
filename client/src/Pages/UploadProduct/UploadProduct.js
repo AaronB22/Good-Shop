@@ -16,7 +16,8 @@ const UploadProduct = () => {
             description:description,
             category:category,
             img: img,
-            price:price
+            price:price,
+            tags:["deliever, new, 4k"]
         }
         const res= await fetch('/api/newProduct',{
             method: "POST",
@@ -94,9 +95,6 @@ const UploadProduct = () => {
                 </Form.Group>
                      {/* <input type='file' onChange={uploadImg}/> */}
             </Form>
-                {/* <img
-                    src={img}
-                /> */}
             <Button style={{
                 width:'50%',
             }}
@@ -104,6 +102,13 @@ const UploadProduct = () => {
             >
                 Submit
             </Button>
+            <img
+                style={{
+                    aspectRatio:'16:9',
+                    width:'30rem'
+                }}
+                src={img}
+            />
         
         
         </>
