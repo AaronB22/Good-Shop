@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Tags from '../Tags/Tags'
 import { 
     Card,
@@ -8,8 +8,28 @@ import {
     Col,
     } from "react-bootstrap";
 import './Product.scss'
+import { UserContext } from "../../utils/UserContext";
 
 const Product = (props) => {
+    const {userInfo, setUserInfo}= useContext(UserContext)
+    console.log(userInfo)
+    console.log(props)
+    const handleAddToCart=async(e)=>{
+        const newCart={
+            "_id":userInfo.id,
+            "email":userInfo.email,
+            "cart":props.product._id
+            
+        }
+       const cart=await fetch('/api/addToCart',{
+        method: "POST",
+        body: JSON.stringify(newCart),
+        headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          }
+        } )
+    }
     const tags=props.product.tags
         return (
             <>
@@ -64,7 +84,7 @@ const Product = (props) => {
                         })}
                         </Container>
             
-                    <Button className="cartBtn">
+                    <Button className="cartBtn" onClick={handleAddToCart}>
                         Add to Cart
                     </Button>
                 </Card>

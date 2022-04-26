@@ -28,6 +28,40 @@ router.get('/api/getAllProdsByCat/:cat', async (req, res)=>{
     }
 })
 
+router.get('/api/productById/:id', async (req, res)=>{
+    const params= req.params.id
+    console.log('getting product')
+    console.log(params)
+    try{
+        const q= await Product.find({}).where('_id').equals(params);
+        console.log(q)
+        res.json(q)
+    }
+    catch(err){
+        throw err
+    }
+})
+
+// router.get('/api/getUser/:id', async (req,res)=>{
+//     const params= req.params.id
+//     console.log("gettingUser")
+//     const user= await User.find({}).where('_id').equals(params);
+//     console.log(user)
+//     res.json(user)
+// })
+router.get('/api/getUser/:id', async (req, res)=>{
+    const params= req.params.id
+    console.log('getting user')
+    console.log(params)
+    try{
+        const q= await User.find({}).where('_id').equals(params);
+        console.log(q)
+        res.json(q)
+    }
+    catch(err){
+        throw err
+    }
+})
 
 
 

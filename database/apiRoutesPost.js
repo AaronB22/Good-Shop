@@ -147,4 +147,34 @@ router.post('/api/newProduct', async({body}, res)=>{
 })
 
 
+router.post('/api/addToCart', async({body},res)=>{
+    const data= await User.find({}).where('_id').equals(body._id)
+    const cart= data[0].cart;
+    let duplicate=false
+    for(let i=0;i<cart.length; i++){
+        
+        if(cart[i]===body.cart){
+            duplicate=true
+        }
+    }
+
+    if(!duplicate){
+        cart.push(body.cart)
+        const filter={
+            'email':body.email
+        }
+    
+        const update = await User.findOneAndUpdate(filter, {"cart":cart}, {upsert: true})
+        res.json(update)
+
+    }
+    if(duplicate){
+        res.status(400)
+    }
+    
+})
+
+// router.post('/api/removeFromCart/:id', async({body},res=>{
+// }))
+
 module.exports = router
