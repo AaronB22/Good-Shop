@@ -1,21 +1,45 @@
 import './Cart.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Card, Col, Row, Button } from 'react-bootstrap';
+import { UserContext } from '../../utils/UserContext';
 
 const Cart = () => {
     const [Loaded, setLoaded]= useState();
-    const [Cart, setCart]= useState()
+    const [Cart, setCart]= useState([])
     const [itemCount, setItemCount]=useState()
+    const {userInfo, setUserInfo}= useContext(UserContext)
+    
     useEffect(()=>{
-        fetch('/api/getAllProdsByCat/Phone')
-        .then((res)=>{return(res.json())}).then((data)=>{
-            console.log(data)
-           
-            setCart(data)
-            setItemCount(JSON.stringify(data.length))
-            setLoaded(true)
-        })
-    },[])
+        setItemCount(Cart.length)
+    },[Cart])
+
+    useEffect(()=>{
+        if(userInfo){
+            const getProductId=async()=>{
+                const res= await  fetch('/api/getUser/'+userInfo.id)
+                const data= await res.json()
+
+                const oldcart= data[0].cart
+                const fetchProduct=async()=>{
+                    for(let i=0; i<oldcart.length;i++){
+                       const r= await fetch('/api/productById/'+oldcart[i])
+                       const productInfo= await r.json()
+                       
+                       setCart((oldArr)=>[...oldArr, productInfo[0]])
+                    }
+                    setLoaded(true)
+                  
+                }
+                fetchProduct()
+            }
+            getProductId()
+
+        }
+        
+    },[userInfo, setCart])
+
+
+
 
     if(Loaded){
         return (  
@@ -23,7 +47,7 @@ const Cart = () => {
                 <div className='spanMarginTop'></div>
                 <div className='cartTitleDiv'>
                     <h1>
-                        Shopping Cart ({itemCount} items)
+                        Shopping Cart ({itemCount} items )
                     </h1>
                     <div className='removeAllText'>
                             Remove All Itms
@@ -35,6 +59,10 @@ const Cart = () => {
                 </div>
     
                 {Cart.map(x=>{
+                    const removeFromCart=(e)=>{
+                        console.log(e)
+                        console.log(x._id)
+                    }
     
                     return(
                         <>
@@ -54,7 +82,9 @@ const Cart = () => {
                         </div>
                         <div className='priceCartCont'>
                             <div className='priceDiv'>${x.price}</div>
-                                <Button className='removeBtn' variant='danger'>
+                                <Button className='removeBtn' variant='danger'
+                                onClick={removeFromCart}
+                                >
                                     REMOVE
                                 </Button>
                         </div>
