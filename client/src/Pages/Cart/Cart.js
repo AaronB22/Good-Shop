@@ -12,6 +12,7 @@ const Cart = () => {
     useEffect(()=>{
         setItemCount(Cart.length)
     },[Cart])
+   
 
     useEffect(()=>{
         if(userInfo){
@@ -38,6 +39,8 @@ const Cart = () => {
         
     },[userInfo, setCart])
     
+
+
     const removeAll=async()=>{
         const deleteObj={
             "userId":userInfo.id,
@@ -56,6 +59,12 @@ const Cart = () => {
 
 
     if(Loaded){
+        let price=0;
+        for (let i=0; i<itemCount;i++){
+            console.log(Cart[i].price)
+            price+=Cart[i].price;
+        }
+        console.log(price)
         return (  
             <>
                 <div className='spanMarginTop'></div>
@@ -71,58 +80,106 @@ const Cart = () => {
                     </div>
 
                 </div>
-    
-                {Cart.map(x=>{
-                    const removeFromCart=async(e)=>{
-                        console.log(e)
-                        console.log(x._id)
-                        const deleteObj={
-                            "cartId":x._id,
-                            "userId":userInfo.id,
-                            "email":userInfo.email
+                <div className='mainCartDiv'>
+                    {Cart.map(x=>{
+                        const removeFromCart=async(e)=>{
+                            console.log(e)
+                            console.log(x._id)
+                            const deleteObj={
+                                "cartId":x._id,
+                                "userId":userInfo.id,
+                                "email":userInfo.email
+                            }
+                            await fetch('/api/removeFromCart',{
+                                method: "POST",
+                                body:JSON.stringify(deleteObj),
+                                headers: {
+                                    Accept: 'application/json, text/plain, */*',
+                                    'Content-Type': 'application/json',
+                                }
+                                } )
+                            window.location.reload()
                         }
-                        await fetch('/api/removeFromCart',{
-                            method: "POST",
-                            body:JSON.stringify(deleteObj),
-                            headers: {
-                                Accept: 'application/json, text/plain, */*',
-                                'Content-Type': 'application/json',
-                              }
-                            } )
-                        window.location.reload()
-                    }
-    
-                    return(
-                        <>
-              
-                    <div className='ProductCard'>
-                        <div className='imgCont'>
-                            <img src={require('../../assests/phone.jpg')} className='cartImg'/>
+        
+                        return(
+                            <>
+                
+                        <div className='ProductCard'>
+                            <div className='imgCont'>
+                                <img src={require('../../assests/phone.jpg')} className='cartImg'/>
 
-                        </div>
-                        <div className='mainCartProdBlock'>
-                            <h2 className='titleCart'>
-                                {x.name}
-                            </h2>
-                            <div className='desCont'>
-                                {x.description}
                             </div>
-                        </div>
-                        <div className='priceCartCont'>
-                            <div className='priceDiv'>${x.price}</div>
-                                <Button className='removeBtn' variant='danger'
-                                onClick={removeFromCart}
-                                >
-                                    REMOVE
-                                </Button>
-                        </div>
+                            <div className='mainCartProdBlock'>
+                                <h2 className='titleCart'>
+                                    {x.name}
+                                </h2>
+                                <div className='desCont'>
+                                    {x.description}
+                                </div>
+                            </div>
+                            <div className='priceCartCont'>
+                                <div className='priceDiv'>${x.price}</div>
+                                    <Button className='removeBtn' variant='danger'
+                                    onClick={removeFromCart}
+                                    >
+                                        REMOVE
+                                    </Button>
+                            </div>
 
 
-                    </div>
-                        
-                        </>
-                    )
-                })}
+                        </div>
+                            
+                            </>
+                        )
+                    })}
+
+                <div className='buyDiv'>
+                    <Card className='buyCard'>
+                    <h2>Purchase Summary</h2>
+                        <Row>
+                            <Col>
+                                <div className='items'>
+                                    item(s):
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className='totalprice'>
+                                    ${price}
+                                </div>
+                            
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <div className='items'>
+                                    Est. Delivery:
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className='totalprice'>
+                                    $0.00
+                                </div>
+                            
+                            </Col>
+                        </Row>
+
+                        <div className='bottomCardCart'>
+                        <Row >
+                            <Col>
+                                
+                            <h3 className='totalTitle'>TOTAL COST:</h3>
+                            </Col>
+                            <Col>
+                            <div className='totalPrice'>${price}</div>
+                                
+                            </Col>
+                        </Row>
+                            <Button className='checkoutBtn'>Checkout</Button>
+                        </div>
+                    </Card>
+                </div>
+                </div>
+
             </>
         );
 
