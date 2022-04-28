@@ -1,0 +1,47 @@
+@import '../../scss/mainThemes.scss';
+.collsapeNavOpen{
+    position: absolute;
+    display: block;
+    width: 100rem;
+    z-index: 2;
+    height: 500%;
+}
+.collaspeBlock{
+    margin-top: 106px;
+    width: 20rem;
+    height: inherit;
+    background-color: whitesmoke;
+    position: absolute;
+    z-index: 3;
+}
+.backdropCollaspe{
+    background-color: black;
+    position: absolute;
+    width: 80rem;
+    height: 500%;
+    opacity: 80%;
+}
+.collsapeNavClosed{
+   display: none;
+}
+.cartCollaspe{
+    
+}
+.blockTitle{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}
+.CollaspeBar{
+    background: $primary-color;
+    height: 3.5rem;
+}
+.closeBtn{
+    position: absolute;
+    color: white;
+    text-align: center;
+    margin-top: 7rem;
+    margin-left: 25rem;
+    z-index: 10;
+    width: 5rem;
+}
