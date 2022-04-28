@@ -174,7 +174,34 @@ router.post('/api/addToCart', async({body},res)=>{
     
 })
 
-// router.post('/api/removeFromCart/:id', async({body},res=>{
-// }))
+router.post('/api/removeFromCart', async({body},res)=>{
+    console.log(body)
+    const req= await User.find({}).where("_id").equals(body.userId)
+    console.log(req[0].cart)
+    const currentCart=req[0].cart;
+    const newCart= [];
+    for(let i=0; i<currentCart.length; i++){
+        if(currentCart[i]!==body.cartId){
+            newCart.push(currentCart[i])
+            console.log(newCart)
+        }
+
+    }
+    const filter={
+        'email':body.email
+    }
+    const update = await User.findOneAndUpdate(filter, {"cart":newCart}, {upsert: true})
+        res.json(update)
+})
+
+    router.post('/api/removeAllFromCart', async({body}, res)=>{
+        const cart=[];
+        const filter={
+            'email':body.email
+        };
+        const update = await User.findOneAndUpdate(filter, {"cart":cart}, {upsert: true})
+        res.json(update)
+
+    })
 
 module.exports = router

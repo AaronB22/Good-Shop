@@ -37,8 +37,22 @@ const Cart = () => {
         }
         
     },[userInfo, setCart])
-
-
+    
+    const removeAll=async()=>{
+        const deleteObj={
+            "userId":userInfo.id,
+            "email":userInfo.email
+        }
+        await fetch('/api/removeAllFromCart',{
+            method: "POST",
+            body:JSON.stringify(deleteObj),
+            headers: {
+                Accept: 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+              }
+            } )
+        // window.location.reload()
+    }
 
 
     if(Loaded){
@@ -49,7 +63,7 @@ const Cart = () => {
                     <h1>
                         Shopping Cart ({itemCount} items )
                     </h1>
-                    <div className='removeAllText'>
+                    <div className='removeAllText' onClick={removeAll}>
                             Remove All Itms
                     </div>
                     <div className='priceLabel'>
@@ -59,9 +73,23 @@ const Cart = () => {
                 </div>
     
                 {Cart.map(x=>{
-                    const removeFromCart=(e)=>{
+                    const removeFromCart=async(e)=>{
                         console.log(e)
                         console.log(x._id)
+                        const deleteObj={
+                            "cartId":x._id,
+                            "userId":userInfo.id,
+                            "email":userInfo.email
+                        }
+                        await fetch('/api/removeFromCart',{
+                            method: "POST",
+                            body:JSON.stringify(deleteObj),
+                            headers: {
+                                Accept: 'application/json, text/plain, */*',
+                                'Content-Type': 'application/json',
+                              }
+                            } )
+                        window.location.reload()
                     }
     
                     return(
