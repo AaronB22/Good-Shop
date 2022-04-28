@@ -113,7 +113,7 @@ const CreateAccount = () => {
                         setName(x.target.value)
                     }}>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="email"  />
+                    <Form.Control />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
@@ -163,8 +163,18 @@ const CreateAccount = () => {
                         marginRight:"auto"
                     }}
                     />
-    
+                    
                 </Card>
+                <h4>Have an Account?</h4>
+                <Button  style={{
+                    width:'100%'
+                }}
+                    onClick={()=>{
+                        window.location.assign('./login')
+                    }}
+                >
+                    Sign In
+                </Button>
         </Card>
      );
 }

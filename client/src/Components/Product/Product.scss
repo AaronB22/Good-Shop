@@ -1,17 +1,56 @@
 .prodcard{
     width: 20rem;
-    height: 30rem;
-    margin: 3rem;
+    height: 32rem;
+    margin-top: 3rem;
 }
 
-.infoBtn{
+.cartBtn{
   margin-top: auto;
   margin-left: auto;
   margin-right: auto;
   width: 95%;
 }
+
+.contImg{
+  width: 100%;
+  
+}
+
 .prodImg{
+  margin: 0;
+  padding: 0;
     width: 100%;
     height: inherit;
-    aspect-ratio: 2/1;
+    // aspect-ratio: 16/9;
+}
+
+.prodHeader{
+  text-align: center;
+  font-size: 2rem;
+}
+
+.prodDes{
+  overflow-y: scroll;
+  height: 10rem;
+  
+}
+
+.prodRate{
+  width:30%;
+}
+
+.priceCard{
+  font-size: 2rem;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.ratingCont{
+  margin-top: auto;
+}
+
+.TagCont{
+  display: flex;
+  margin-bottom: 5px;
+  flex-direction: row;
 }

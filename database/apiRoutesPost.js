@@ -3,6 +3,10 @@ const Product= require('./models/Product')
 const Category= require('./models/Category')
 const User= require('./models/User')
 const bcrypt = require('bcrypt');
+const grid = require('gridfs-stream');
+const fs = require('fs');
+const formidable = require('express-formidable');
+var multer = require('multer');
 
 
 router.post('/api/createNewProduct',  ({body},res)=>{
@@ -128,5 +132,76 @@ router.post('/api/googlevalidate', async({body}, res)=>{
     }
 })
 
+router.post('/api/newProduct', async({body}, res)=>{
+    console.log(body)
+    try{
+        await Product.insertMany(body)
+        console.log('done')
+         res.status(200)
+
+    }
+    catch(err){
+        console.log(err)
+        res.status(500)
+    }
+})
+
+
+router.post('/api/addToCart', async({body},res)=>{
+    const data= await User.find({}).where('_id').equals(body._id)
+    const cart= data[0].cart;
+    let duplicate=false
+    for(let i=0;i<cart.length; i++){
+        
+        if(cart[i]===body.cart){
+            duplicate=true
+        }
+    }
+
+    if(!duplicate){
+        cart.push(body.cart)
+        const filter={
+            'email':body.email
+        }
+    
+        const update = await User.findOneAndUpdate(filter, {"cart":cart}, {upsert: true})
+        res.json(update)
+
+    }
+    if(duplicate){
+        res.status(400)
+    }
+    
+})
+
+router.post('/api/removeFromCart', async({body},res)=>{
+    console.log(body)
+    const req= await User.find({}).where("_id").equals(body.userId)
+    console.log(req[0].cart)
+    const currentCart=req[0].cart;
+    const newCart= [];
+    for(let i=0; i<currentCart.length; i++){
+        if(currentCart[i]!==body.cartId){
+            newCart.push(currentCart[i])
+            console.log(newCart)
+        }
+
+    }
+    const filter={
+        'email':body.email
+    }
+    const update = await User.findOneAndUpdate(filter, {"cart":newCart}, {upsert: true})
+        res.json(update)
+})
+
+    router.post('/api/removeAllFromCart', async({body}, res)=>{
+        const cart=[];
+        const filter={
+            'email':body.email
+        };
+        const update = await User.findOneAndUpdate(filter, {"cart":cart}, {upsert: true})
+        res.json(update)
+
+    })
 
 module.exports = router

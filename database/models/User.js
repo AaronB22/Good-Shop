@@ -15,6 +15,9 @@ const userSchema= new Schema({
     },
     googleToken:{
         type:String
+    },
+    cart:{
+        type:[String]
     }
 })
 

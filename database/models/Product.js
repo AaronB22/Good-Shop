@@ -11,10 +11,17 @@ const productSchema= new Schema({
         trim:true
     },
     category:{
+        type:String
+    },
+    img:{
+        type:String
         
     },
     price:{
         type:Number
+    },
+    tags:{
+        type:[String]
     }
 })
 

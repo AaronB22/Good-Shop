@@ -1,0 +1,115 @@
+.spanMarginTop{
+    margin-top: 2rem;
+}
+.cartImg{
+    aspect-ratio: 16/9;
+    height: 12rem;
+}
+
+.cartTitleDiv{
+    border-bottom: gray 1px solid;
+}
+
+.removeAllText{
+    color: red;
+}
+
+.priceLabel{
+    text-align: right;
+}
+
+.ProductCard{
+
+    border: solid black 3px;
+    display: grid;
+    height: 13rem;
+    grid-template-areas:
+    'header header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';
+    padding: 0;
+    margin-top: 5px;
+    gap:0
+}
+.imgCont{
+    
+    grid-area: menu;
+    width: 22rem;
+    
+    height: 12rem;
+}
+
+.mainCartProdBlock{
+    grid-area: main;
+    width: 50rem;
+    margin-right: auto;
+    
+    height: 12rem;
+    
+}
+
+.priceCartCont{
+    grid-area: right;
+    height: 12rem;
+    background-color: azure;
+}
+
+.titleCart{
+    text-align: center;
+}
+.desCont{
+    width: 30%;
+    overflow: scroll;
+}
+
+.priceDiv{
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.removeBtn{
+    width: 6rem;
+    text-align: center;
+    display: block !important; 
+    position: relative;
+    top: 110px;
+    margin-left: auto;
+    margin-top: auto;
+    background-color: rosybrown;
+}
+
+.buyDiv{
+    width: 100%;
+    border-top: 1px solid grey;
+    margin-top: 1rem;
+}
+
+.buyCard{
+    width: 30rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+.totalprice{
+    text-align: right;
+    font-size: 22px;
+    font-weight: 500;
+}
+.items{
+    font-size: 22px;
+}
+.bottomCardCart{
+    border-top: gray solid 1px;
+}
+.totalTitle{
+    font-size: 2rem;
+}
+
+.totalPrice{
+    text-align: right;
+    font-size: 2rem;
+    font-weight: 600;
+}
+.checkoutBtn{
+    width: 100%;
+}

@@ -5,6 +5,8 @@ import { UserContext } from '../../utils/UserContext';
 import { LogInAuthContext } from "../../utils/LogInAuth";
 import 'bootstrap/dist/css/bootstrap.css'
 import { useContext, useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 const NavBarComp = () => {
     const {userInfo, setUserInfo}= useContext(UserContext);
@@ -101,7 +103,12 @@ const NavBarComp = () => {
                 </Modal>
                 
             </Navbar.Brand> 
-            <Navbar.Brand>Cart</Navbar.Brand> 
+            <Navbar.Brand>
+                <FontAwesomeIcon icon={faCartShopping}
+                    className="cart"
+                    onClick={()=>window.location.assign('/mycart')}
+                />
+            </Navbar.Brand> 
     </Navbar>
     );
 }
