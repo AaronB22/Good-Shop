@@ -7,12 +7,13 @@ const Category = (props) => {
 
     return ( 
         
-       
+    //    <div className="catDiv">
             <Col 
             onClick={(e)=>{
                 console.log(e.target.innerText)
                 window.location.assign('/productList/'+e.target.innerText)
             }}
+            className="catCol"
             >
                 <Card className="catBlock">
                     <img
@@ -26,6 +27,8 @@ const Category = (props) => {
                     </div>
                 </Card>
             </Col>
+
+    //    </div>
            
     
      );

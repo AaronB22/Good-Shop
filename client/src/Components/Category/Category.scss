@@ -4,7 +4,13 @@
     width: 20rem;
     height: 20rem;
 }
+// .catDiv{
+//     height: 100%;
+// }
+.catCol{
+    height: 50rem;
 
+}
 .catImg{
     position: absolute;
     width: 100%;
@@ -32,7 +38,6 @@ $is-hover:false;
 
 
 .catTitle{
-    // position: absolute;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
@@ -44,3 +49,8 @@ $is-hover:false;
 
 
 
+@media screen and( max-width: 400px) {
+    .catBlock{
+        width: 250px;
+    }
+}

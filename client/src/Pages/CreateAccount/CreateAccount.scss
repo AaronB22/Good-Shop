@@ -17,3 +17,17 @@
     color: red;
     font-style: italic;
 }
+
+@media screen and( max-width: 750px) {
+    .createCard{
+        width: 400px;
+    }
+    .createForm{
+        width: inherit;
+    }
+}
+@media screen and( max-width: 450px) {
+    .createCard{
+        width: 300px;
+    }
+}

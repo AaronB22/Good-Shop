@@ -12,6 +12,7 @@
 
 .header{
     padding-right: 3rem;
+    cursor: pointer;
 }
 
 .navCont{
@@ -20,8 +21,18 @@
 }
 
 .search{
-    width: 40rem;
+    width: 38rem;
     height: 1.2rem;
+}
+.searchBtn{
+    width: 2;
+    height: 1.2rem;
+    margin-top: .6rem;
+    cursor: pointer;
+}
+.searchsmall{
+    height: 1.5rem;
+    width: 20rem;
 }
 
 .rightElm{
@@ -41,4 +52,22 @@
 
 .cart{
     width: 2rem;
+    cursor: pointer;
+}
+.collaspeBar{
+    margin-left: 1rem;
+}
+
+.searchformsmall{
+    margin-left: auto;
+    margin-right: auto;
+}
+.dropBtn{
+    background-color: $primary-color !important;
+    border: $primary-color !important;
+}
+@media screen and( max-width: 330px) {
+    .searchsmall{
+        width: 200px;
+    }
 }

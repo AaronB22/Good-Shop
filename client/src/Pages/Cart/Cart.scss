@@ -51,7 +51,6 @@
 .priceCartCont{
     grid-area: right;
     height: 12rem;
-    background-color: azure;
 }
 
 .titleCart{
@@ -76,7 +75,6 @@
     top: 110px;
     margin-left: auto;
     margin-top: auto;
-    background-color: rosybrown;
 }
 
 .buyDiv{
@@ -112,4 +110,116 @@
 }
 .checkoutBtn{
     width: 100%;
+}
+
+@media screen and( max-width: 1600px) {
+    .mainCartProdBlock{
+        width: 40rem;
+
+    }
+}
+
+@media screen and( max-width: 1400px) {
+    .mainCartProdBlock{
+        width: 20rem;
+
+    }
+}
+
+@media screen and( max-width: 1000px) {
+    .mainCartProdBlock{
+        width: 10rem;
+
+    }
+    .titleCart{
+        font-size: 25px
+    }
+    .imgCont{
+        width: inherit;
+    }
+    .cartImg{
+        height: 10rem;
+    }
+}
+@media screen and( max-width: 700px) {
+    .cartImg{
+        height: 6rem;
+    }
+    .priceDiv{
+        position: relative;
+        top:9.5rem;
+        right: 23rem;
+    }
+}
+@media screen and( max-width: 600px) {
+    // .titleCart{
+    //     font-size: 16px
+    // }
+    .mainCartProdBlock{
+        width: 5rem;
+    }
+    .buyCard{
+        
+        width: 20rem;
+    }
+    .priceDiv{
+        right: 20rem;
+    }
+}
+@media screen and( max-width: 530px) {
+    .desCont{
+        display: none;
+    }
+    .priceDiv{
+        right: 15rem;
+    }
+}
+@media screen and( max-width: 530px) {
+    .titleCart{
+        font-size: 25px;
+        width: 10rem;
+        position: absolute;
+    }
+    .removeBtn{
+        right:5rem
+    }
+}
+@media screen and( max-width: 400px) {
+    .titleCart{
+  
+        width: 8rem;
+    }
+    .removeBtn{
+        right:5rem
+    }
+    
+    .cartImg{
+        height: 5rem;
+    }
+    .mainCartDiv{
+        width: 20rem;
+    }
+    .priceDiv{
+        right: 12rem;
+    }
+}
+@media screen and( max-width: 330px) {
+    
+    .removeBtn{
+        right:2rem
+    }
+    .buyCard{
+        width: 200px;
+    }
+    .mainCartDiv{
+        width: 300px;
+    }
+    // .titleCart{
+    //     position: relative;
+    //     right: 180px;
+    //     top:50px
+    // }
+    .ProductCard{
+        height: 20rem;
+    }
 }

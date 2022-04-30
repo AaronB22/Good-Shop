@@ -42,6 +42,21 @@ router.get('/api/productById/:id', async (req, res)=>{
     }
 })
 
+router.get("/search/:query", async (req, res)=>{
+    const params= req.params.query;
+    console.log(params)
+    const q= await Product.find({})
+    let returnArr=[]
+    for(let i=0;i<q.length; i++){
+        // console.log(q[i].name.includes(params))
+        if(q[i].name.includes(params)){
+            returnArr.push(q[i])
+        }
+    }
+    res.json(returnArr)
+    
+})
+
 // router.get('/api/getUser/:id', async (req,res)=>{
 //     const params= req.params.id
 //     console.log("gettingUser")

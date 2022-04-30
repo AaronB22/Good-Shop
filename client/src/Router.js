@@ -17,6 +17,7 @@ const Routers = () => {
             <Route exact path='/login' element={<Login/>} />
             <Route exact path='/createAccount' element={<CreateAccount/>}/>
             <Route exact path='/productList/:category' element={<ProductList/>}/>
+            <Route exact path='/productListSearch/search/:category' element={<ProductList/>}/>
             <Route exact path='/admin/upload' element={<UploadProduct/>}/>
             <Route exact path='/mycart' element={<Cart/>} />
             <Route exact path='/product/:id' element={<Product/>} />

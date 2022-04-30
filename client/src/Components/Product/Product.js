@@ -12,9 +12,12 @@ import { UserContext } from "../../utils/UserContext";
 
 const Product = (props) => {
     const {userInfo, setUserInfo}= useContext(UserContext)
-    console.log(userInfo)
-    console.log(props)
+    const handleWindowChange=(e)=>{
+        console.log(props.product._id)
+        window.location.assign('/product/'+props.product._id)
+    }
     const handleAddToCart=async(e)=>{
+        alert('Added to Cart')
         const newCart={
             "_id":userInfo.id,
             "email":userInfo.email,
@@ -34,9 +37,9 @@ const Product = (props) => {
         return (
             <>
                 <Card className="prodcard" style={{
-                    // borderBlockColor:'white',
-                    // borderColor:'white',
-                }}>
+                }}
+                    // onClick={handleWindowChange}
+                >
                     <Container className= "contImg">
                     {(()=>{
                         try{
@@ -58,22 +61,22 @@ const Product = (props) => {
 
                     })()}
                     </Container>
-                    <Card.Text className="priceCard">
+                    <Card.Text className="priceCard" onClick={handleWindowChange}>
                                 ${props.product.price}
                             </Card.Text>
-                    <Card.Text className='prodHeader'>
+                    <Card.Text className='prodHeader' onClick={handleWindowChange}>
                        {props.product.name}
                     </Card.Text>
                     {/* <Card.Text className="prodDes">
                         {props.product.description}
                     </Card.Text> */}
-                        <Container className="ratingCont">
+                        <Container className="ratingCont" onClick={handleWindowChange}>
                         <img
                                 className="prodRate"
                                 src={require('../../assests/star.png')}
                             />
                         </Container>
-                        <Container className="TagCont">
+                        <Container className="TagCont" onClick={handleWindowChange}>
                            
                         {tags.map(x=>{
                             return(

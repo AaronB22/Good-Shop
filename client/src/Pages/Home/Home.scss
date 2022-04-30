@@ -17,3 +17,33 @@
     font-size: 2rem;
     margin-left: 10%;
 }
+@media screen and( max-width: 1000px) {
+    .car-block{
+        width: 600px;
+    }
+}
+@media screen and( max-width: 830px) {
+    .car-block{
+        width: 500px;
+
+    }
+    .featured{
+        position: relative;
+        right: 10px;
+    }
+}
+@media screen and( max-width: 700px) {
+    .car-block{
+        width: 400px;
+    }
+}
+@media screen and( max-width: 400px) {
+    .car-block{
+        width: 300px;
+    }
+}
+@media screen and( max-width: 300px) {
+    .car-block{
+        width: 200px;
+    }
+}

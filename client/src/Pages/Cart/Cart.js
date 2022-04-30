@@ -1,6 +1,6 @@
 import './Cart.scss';
 import { useState, useEffect, useContext } from 'react';
-import { Card, Col, Row, Button } from 'react-bootstrap';
+import { Card, Col, Row, Button, Spinner } from 'react-bootstrap';
 import { UserContext } from '../../utils/UserContext';
 
 const Cart = () => {
@@ -186,9 +186,9 @@ const Cart = () => {
     }
     if(!Loaded){
         return(<>
-            <h1>
-                Loading...
-            </h1>
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
         </>)
     }
 }
