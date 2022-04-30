@@ -38,7 +38,6 @@ const Product = (props) => {
             <>
                 <Card className="prodcard" style={{
                 }}
-                    // onClick={handleWindowChange}
                 >
                     <Container className= "contImg">
                     {(()=>{
@@ -67,9 +66,6 @@ const Product = (props) => {
                     <Card.Text className='prodHeader' onClick={handleWindowChange}>
                        {props.product.name}
                     </Card.Text>
-                    {/* <Card.Text className="prodDes">
-                        {props.product.description}
-                    </Card.Text> */}
                         <Container className="ratingCont" onClick={handleWindowChange}>
                         <img
                                 className="prodRate"

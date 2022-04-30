@@ -70,7 +70,7 @@ const Cart = () => {
                 <div className='spanMarginTop'></div>
                 <div className='cartTitleDiv'>
                     <h1>
-                        Shopping Cart ({itemCount} items )
+                        Shopping Cart ({itemCount} items)
                     </h1>
                     <div className='removeAllText' onClick={removeAll}>
                             Remove All Itms
@@ -83,8 +83,6 @@ const Cart = () => {
                 <div className='mainCartDiv'>
                     {Cart.map(x=>{
                         const removeFromCart=async(e)=>{
-                            console.log(e)
-                            console.log(x._id)
                             const deleteObj={
                                 "cartId":x._id,
                                 "userId":userInfo.id,
