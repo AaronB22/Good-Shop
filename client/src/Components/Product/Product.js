@@ -17,6 +17,7 @@ const Product = (props) => {
         window.location.assign('/product/'+props.product._id)
     }
     const handleAddToCart=async(e)=>{
+        alert('Added to Cart')
         const newCart={
             "_id":userInfo.id,
             "email":userInfo.email,
@@ -37,7 +38,7 @@ const Product = (props) => {
             <>
                 <Card className="prodcard" style={{
                 }}
-                    onClick={handleWindowChange}
+                    // onClick={handleWindowChange}
                 >
                     <Container className= "contImg">
                     {(()=>{
@@ -60,22 +61,22 @@ const Product = (props) => {
 
                     })()}
                     </Container>
-                    <Card.Text className="priceCard">
+                    <Card.Text className="priceCard" onClick={handleWindowChange}>
                                 ${props.product.price}
                             </Card.Text>
-                    <Card.Text className='prodHeader'>
+                    <Card.Text className='prodHeader' onClick={handleWindowChange}>
                        {props.product.name}
                     </Card.Text>
                     {/* <Card.Text className="prodDes">
                         {props.product.description}
                     </Card.Text> */}
-                        <Container className="ratingCont">
+                        <Container className="ratingCont" onClick={handleWindowChange}>
                         <img
                                 className="prodRate"
                                 src={require('../../assests/star.png')}
                             />
                         </Container>
-                        <Container className="TagCont">
+                        <Container className="TagCont" onClick={handleWindowChange}>
                            
                         {tags.map(x=>{
                             return(
