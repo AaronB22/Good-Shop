@@ -69,7 +69,7 @@ const Home = () => {
                     </Card.Text>
                     {products.map(x=>{
                         return(
-                            <Col>
+                            <Col className="FeatureProd">
                                 <Product
                                     product={x}
                                 />
