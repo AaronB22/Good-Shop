@@ -59,6 +59,10 @@
     margin-left: auto;
     margin-right: auto;
 }
+.dropBtn{
+    background-color: $primary-color !important;
+    border: $primary-color !important;
+}
 @media screen and( max-width: 330px) {
     .searchsmall{
         width: 200px;

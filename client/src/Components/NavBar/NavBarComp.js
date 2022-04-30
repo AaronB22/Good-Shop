@@ -99,8 +99,7 @@ const NavBarComp = () => {
                                     <>
                                         <Dropdown className="customDrop">
                                         <Dropdown.Toggle className="dropBtn" style={{
-                                            background: '#4E4E50',
-                                            border:'#4E4E50',
+                                        
                                             color:'black',
                                             fontSize:'1.5rem'
                                         }}>
