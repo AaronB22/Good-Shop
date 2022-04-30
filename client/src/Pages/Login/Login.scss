@@ -27,3 +27,16 @@
     margin-top: 3rem;
 }
 
+@media screen and( max-width: 800px) {
+    .loginCard{
+        width: 30rem;
+    }
+    .loginForm{
+        width: inherit;
+    }
+}
+@media screen and( max-width: 600px) {
+    .loginCard{
+        width: 100%;
+    }
+}
