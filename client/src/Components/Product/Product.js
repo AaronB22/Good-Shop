@@ -12,8 +12,10 @@ import { UserContext } from "../../utils/UserContext";
 
 const Product = (props) => {
     const {userInfo, setUserInfo}= useContext(UserContext)
-    console.log(userInfo)
-    console.log(props)
+    const handleWindowChange=(e)=>{
+        console.log(props.product._id)
+        window.location.assign('/product/'+props.product._id)
+    }
     const handleAddToCart=async(e)=>{
         const newCart={
             "_id":userInfo.id,
@@ -34,9 +36,9 @@ const Product = (props) => {
         return (
             <>
                 <Card className="prodcard" style={{
-                    // borderBlockColor:'white',
-                    // borderColor:'white',
-                }}>
+                }}
+                    onClick={handleWindowChange}
+                >
                     <Container className= "contImg">
                     {(()=>{
                         try{

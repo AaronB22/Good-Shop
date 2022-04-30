@@ -1,4 +1,4 @@
-import { Navbar,Form, Dropdown, Modal, Button} from "react-bootstrap";
+import { Navbar,Form, Dropdown, Modal, Button, Row, Col} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './NvB.scss'
 import { UserContext } from '../../utils/UserContext';
@@ -6,13 +6,15 @@ import { LogInAuthContext } from "../../utils/LogInAuth";
 import 'bootstrap/dist/css/bootstrap.css'
 import { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCartShopping, faBars } from '@fortawesome/free-solid-svg-icons'
+import {faCartShopping, faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import CollaspeNav from "../CollaspeNav/CollaspeNav";
 import { CollaspeNavContext } from "../../utils/CollaspeNavContext";
+
 
 const NavBarComp = () => {
     const {collaspeState, setCollaspeState} = useContext(CollaspeNavContext )
     const {userInfo, setUserInfo}= useContext(UserContext);
+    const [searchQuery, setSearchQuery]= useState()
     const {logInStatus, setLogInStatus}= useContext(LogInAuthContext)
     const [windowWidth, setWindowWidth]= useState(1800)
     const [navName,setNavName]=useState('Log In')
@@ -33,7 +35,10 @@ const NavBarComp = () => {
         setNavName('Log In')
         window.localStorage.clear()
     }
-
+    const handleSearch=(e)=>{
+        setSearchQuery(e.target.value)
+        
+    }
 
     if(windowWidth>1400){
         return ( 
@@ -47,9 +52,28 @@ const NavBarComp = () => {
                 </Navbar.Brand> 
                 <div className="navCont">
                     <Form className='searchform'>
-                        <Form.Group className="mb-3 search" >
-                            <Form.Control placeholder="search..." />
-                        </Form.Group>
+                        <Row>
+                            <Col>
+                                <Form.Group className="mb-3 search" >
+                                    <Form.Control placeholder="search..." onChange={handleSearch}
+                                    onKeyDown={e=>{
+                                        if(e.key==='Enter'){
+                                            e.preventDefault()
+                                            window.location.assign('/productListSearch/search/'+searchQuery)
+                                        }
+                                    }}
+                                    />
+                                </Form.Group>
+                            
+                            </Col>
+                            <Col>
+                                <FontAwesomeIcon icon={faMagnifyingGlass}
+                                    className="searchBtn"
+                                    onClick={()=>window.location.assign('/productListSearch/search/'+searchQuery)}
+                                />
+
+                            </Col>
+                        </Row>
                     </Form>
                 </div>
                     <Navbar.Brand
@@ -133,10 +157,35 @@ const NavBarComp = () => {
                         <h3 onClick={()=>window.location.assign('/home')}>
                             React ECOM
                         </h3>
-                <Form className='searchformsmall'>
+                {/* <Form className='searchformsmall'>
                         <Form.Group className="mb-3 searchsmall" >
                             <Form.Control placeholder="search..." />
                         </Form.Group>
+                    </Form> */}
+                    <Form className="searchformsmall">
+                        <Row>
+                                <Col>
+                                    <Form.Group className="mb-3 searchsmall" >
+                                        <Form.Control placeholder="search..." onChange={handleSearch}
+                                        onKeyDown={e=>{
+                                            if(e.key==='Enter'){
+                                                e.preventDefault()
+                                                window.location.assign('/productListSearch/search/'+searchQuery)
+                                            }
+                                        }}
+                                        />
+                                    </Form.Group>
+                                
+                                </Col>
+                                <Col>
+                                    <FontAwesomeIcon icon={faMagnifyingGlass}
+                                        className="searchBtn"
+                                        onClick={()=>window.location.assign('/productListSearch/search/'+searchQuery)}
+                                    />
+
+                                </Col>
+                            </Row>
+
                     </Form>
                 <CollaspeNav />
 

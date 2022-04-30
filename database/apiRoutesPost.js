@@ -3,11 +3,6 @@ const Product= require('./models/Product')
 const Category= require('./models/Category')
 const User= require('./models/User')
 const bcrypt = require('bcrypt');
-const grid = require('gridfs-stream');
-const fs = require('fs');
-const formidable = require('express-formidable');
-var multer = require('multer');
-
 
 router.post('/api/createNewProduct',  ({body},res)=>{
     Product.insertMany(body)

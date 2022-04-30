@@ -29,3 +29,12 @@
     margin-bottom: 5px;
     flex-direction: row;
   }
+
+  @media screen and (max-width: 800px){
+      .singleProdCard{
+          width: 100%;
+      }
+      .singleProdImg{
+          width: inherit;
+      }
+  }

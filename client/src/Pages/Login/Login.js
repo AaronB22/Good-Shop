@@ -18,7 +18,7 @@ const Login = () => {
         setLoaded(true)
    },[])
     const handleFailure= (result) =>{
-        console.log('FAIL TO GET GOOGLE DATA')
+        console.log('FAIL TO GET DATA')
         alert(result)
     }
     const handleGoogleLogin=async(data)=>{
@@ -42,6 +42,9 @@ const Login = () => {
             setLogInStatus(true)
             window.localStorage.setItem('userData', JSON.stringify(data))
             window.location.assign('/')
+        }
+        else{
+            handleFailure()
         }
     }
 
@@ -67,6 +70,9 @@ const Login = () => {
           setUserInfo(data)
           window.localStorage.setItem('userData', JSON.stringify(data))
           window.location.assign('/')
+      }
+      else{
+          alert("Log In Info Incorrect")
       }
         
     }

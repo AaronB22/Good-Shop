@@ -1,5 +1,5 @@
 import Product from "../../Components/Product/Product";
-import { Card, Col,Row, Form, Container, DropdownButton, Dropdown } from "react-bootstrap";
+import { Card, Col,Row, Form, Container, DropdownButton, Dropdown, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect , useState} from "react";
 import './ProductList.scss'
@@ -15,11 +15,30 @@ const ProductList = () => {
         setPriceNumber(x.target.value)
     }
     useEffect(()=>{
-        fetch('/api/getAllProdsByCat/'+category.category)
-        .then((res)=>{return(res.json())}).then((data)=>{
-            setProducts(data)
-            setLoaded(true)
-        })
+        console.log(window.location)
+        if(window.location.pathname.includes("search")){
+            fetch("/search/"+category.category).then(res=>{
+                return(res.json())
+            }).then(data=>{
+                if(data.length!==0){
+                    setProducts(data)
+
+                }
+                if(data.length===0){
+                    alert("No results :(")
+                    setProducts(data)
+                }
+                setLoaded(true)
+            })
+        }
+        else{
+            fetch('/api/getAllProdsByCat/'+category.category)
+            .then((res)=>{return(res.json())}).then((data)=>{
+                setProducts(data)
+                setLoaded(true)
+            })
+
+        }
     },[])
     if(loaded){
         return ( 
