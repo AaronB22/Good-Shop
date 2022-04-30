@@ -32,7 +32,6 @@ $is-hover:false;
 
 
 .catTitle{
-    // position: absolute;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: auto;
@@ -44,3 +43,8 @@ $is-hover:false;
 
 
 
+@media screen and( max-width: 400px) {
+    .catBlock{
+        width: 250px;
+    }
+}
