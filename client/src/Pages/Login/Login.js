@@ -68,6 +68,7 @@ const Login = () => {
           const data= await res.json()
           console.log(data)
           setUserInfo(data)
+          setLogInStatus(true)
           window.localStorage.setItem('userData', JSON.stringify(data))
           window.location.assign('/')
       }

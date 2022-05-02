@@ -2,16 +2,19 @@ import './Cart.scss';
 import { useState, useEffect, useContext } from 'react';
 import { Card, Col, Row, Button, Spinner } from 'react-bootstrap';
 import { UserContext } from '../../utils/UserContext';
+import { LogInAuthContext } from '../../utils/LogInAuth';
 
 const Cart = () => {
     const [Loaded, setLoaded]= useState();
     const [Cart, setCart]= useState([])
     const [itemCount, setItemCount]=useState()
     const {userInfo, setUserInfo}= useContext(UserContext)
+    const {logInStatus, setLogInStatus}= useContext(LogInAuthContext)
     
     useEffect(()=>{
         setItemCount(Cart.length)
     },[Cart])
+
    
 
     useEffect(()=>{
@@ -35,9 +38,9 @@ const Cart = () => {
             }
             getProductId()
 
-        }
+        };
         
-    },[userInfo, setCart])
+    },[userInfo, setCart,])
     
 
 

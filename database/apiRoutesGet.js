@@ -4,15 +4,6 @@ const Product= require('./models/Product')
 const bcrypt = require('bcrypt');
 
 
-// router.get('/api/userlogin', async(req, res)=>{
-//     try{
-       
-
-//     }catch(err){
-       
-//     }
-// })
-
 
 router.get('/api/getAllProdsByCat/:cat', async (req, res)=>{
     const params= req.params.cat
@@ -57,13 +48,7 @@ router.get("/search/:query", async (req, res)=>{
     
 })
 
-// router.get('/api/getUser/:id', async (req,res)=>{
-//     const params= req.params.id
-//     console.log("gettingUser")
-//     const user= await User.find({}).where('_id').equals(params);
-//     console.log(user)
-//     res.json(user)
-// })
+
 router.get('/api/getUser/:id', async (req, res)=>{
     const params= req.params.id
     console.log('getting user')
