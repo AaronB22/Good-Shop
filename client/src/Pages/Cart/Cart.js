@@ -2,14 +2,12 @@ import './Cart.scss';
 import { useState, useEffect, useContext } from 'react';
 import { Card, Col, Row, Button, Spinner } from 'react-bootstrap';
 import { UserContext } from '../../utils/UserContext';
-import { LogInAuthContext } from '../../utils/LogInAuth';
 
 const Cart = () => {
     const [Loaded, setLoaded]= useState();
     const [Cart, setCart]= useState([])
     const [itemCount, setItemCount]=useState()
-    const {userInfo, setUserInfo}= useContext(UserContext)
-    const {logInStatus, setLogInStatus}= useContext(LogInAuthContext)
+    const {userInfo}= useContext(UserContext)
     
     useEffect(()=>{
         setItemCount(Cart.length)
@@ -57,7 +55,7 @@ const Cart = () => {
                 'Content-Type': 'application/json',
               }
             } )
-        // window.location.reload()
+        window.location.reload()
     }
 
 
@@ -76,7 +74,7 @@ const Cart = () => {
                         Shopping Cart ({itemCount} items)
                     </h1>
                     <div className='removeAllText' onClick={removeAll}>
-                            Remove All Itms
+                            Remove All Items
                     </div>
                     <div className='priceLabel'>
                            Price
@@ -103,9 +101,11 @@ const Cart = () => {
                         }
         
                         return(
-                            <>
+
                 
-                        <div className='ProductCard'>
+                        <div className='ProductCard' 
+                            key={x._id}
+                        >
                             <div className='imgCont'>
                                 <img src={require('../../assests/phone.jpg')} className='cartImg'/>
 
@@ -130,7 +130,7 @@ const Cart = () => {
 
                         </div>
                             
-                            </>
+
                         )
                     })}
 
