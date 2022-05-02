@@ -8,30 +8,38 @@ import {
     Col,
     } from "react-bootstrap";
 import './Product.scss'
+import { LogInAuthContext } from "../../utils/LogInAuth";
 import { UserContext } from "../../utils/UserContext";
 
 const Product = (props) => {
     const {userInfo, setUserInfo}= useContext(UserContext)
+    const {logInStatus, setLogInStatus}=useContext(LogInAuthContext)
     const handleWindowChange=(e)=>{
         console.log(props.product._id)
         window.location.assign('/product/'+props.product._id)
     }
     const handleAddToCart=async(e)=>{
-        alert('Added to Cart')
-        const newCart={
-            "_id":userInfo.id,
-            "email":userInfo.email,
-            "cart":props.product._id
-            
+        if(logInStatus){
+            alert('Added to Cart')
+            const newCart={
+                "_id":userInfo.id,
+                "email":userInfo.email,
+                "cart":props.product._id
+                
+            }
+            const cart=await fetch('/api/addToCart',{
+             method: "POST",
+             body: JSON.stringify(newCart),
+             headers: {
+                 Accept: 'application/json, text/plain, */*',
+                 'Content-Type': 'application/json',
+               }
+             } )
+
         }
-       const cart=await fetch('/api/addToCart',{
-        method: "POST",
-        body: JSON.stringify(newCart),
-        headers: {
-            Accept: 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-          }
-        } )
+        if(!logInStatus){
+            alert("Need to be Logged In")
+        }
     }
     const tags=props.product.tags
         return (
