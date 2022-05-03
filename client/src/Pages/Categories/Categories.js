@@ -1,4 +1,4 @@
-import { Card, Container, Row} from "react-bootstrap";
+import { Container, Row} from "react-bootstrap";
 import Category from "../../Components/Category/Category";
 import './Categories.scss';
 import { NavBarContext } from '../../utils/navBarStatus';

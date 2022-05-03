@@ -12,7 +12,6 @@ import { useContext } from 'react';
 
 const Routers = () => {
     const {logInStatus, setLogInStatus}=  useContext(LogInAuthContext)
-    console.log(logInStatus)
     return ( 
     <>
         <Routes>

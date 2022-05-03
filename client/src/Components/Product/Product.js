@@ -4,16 +4,14 @@ import {
     Card,
     Container,
     Button,
-    Row,
-    Col,
     } from "react-bootstrap";
 import './Product.scss'
 import { LogInAuthContext } from "../../utils/LogInAuth";
 import { UserContext } from "../../utils/UserContext";
 
 const Product = (props) => {
-    const {userInfo, setUserInfo}= useContext(UserContext)
-    const {logInStatus, setLogInStatus}=useContext(LogInAuthContext)
+    const {userInfo}= useContext(UserContext)
+    const {logInStatus}=useContext(LogInAuthContext)
     const handleWindowChange=(e)=>{
         console.log(props.product._id)
         window.location.assign('/product/'+props.product._id)
@@ -43,59 +41,58 @@ const Product = (props) => {
     }
     const tags=props.product.tags
         return (
-            <>
-                <Card className="prodcard" style={{
-                }}
-                >
-                    <Container className= "contImg">
-                    {(()=>{
-                        try{
-                            return(
-                                <img
-                                className="prodImg"
-                                src={require(props.product.img)}
-                                />
-                            )
-                        }
-                        catch(err){
-                            return(
-                                <img
-                                className="prodImg"
-                                src={require('../../assests/phone.jpg')}
-                                />
-                            )
-                        }
-
-                    })()}
-                    </Container>
-                    <Card.Text className="priceCard" onClick={handleWindowChange}>
-                                ${props.product.price}
-                            </Card.Text>
-                    <Card.Text className='prodHeader' onClick={handleWindowChange}>
-                       {props.product.name}
-                    </Card.Text>
-                        <Container className="ratingCont" onClick={handleWindowChange}>
-                        <img
-                                className="prodRate"
-                                src={require('../../assests/star.png')}
+            <Card className="prodcard"
+                key={props.product._id}
+            >
+                <Container className= "contImg">
+                {(()=>{
+                    try{
+                        return(
+                            <img
+                            className="prodImg"
+                            src={require(props.product.img)}
                             />
-                        </Container>
-                        <Container className="TagCont" onClick={handleWindowChange}>
-                           
-                        {tags.map(x=>{
-                            return(
-                                <Tags
-                                    tag={x}
-                                />
-                            )
-                        })}
-                        </Container>
-            
-                    <Button className="cartBtn" onClick={handleAddToCart}>
-                        Add to Cart
-                    </Button>
-                </Card>
-            </>
+                        )
+                    }
+                    catch(err){
+                        return(
+                            <img
+                            className="prodImg"
+                            src={require('../../assests/phone.jpg')}
+                            />
+                        )
+                    }
+
+                })()}
+                </Container>
+                <Card.Text className="priceCard" onClick={handleWindowChange}>
+                            ${props.product.price}
+                        </Card.Text>
+                <Card.Text className='prodHeader' onClick={handleWindowChange}>
+                    {props.product.name}
+                </Card.Text>
+                    <Container className="ratingCont" onClick={handleWindowChange}>
+                    <img
+                            className="prodRate"
+                            src={require('../../assests/star.png')}
+                        />
+                    </Container>
+                    <Container className="TagCont" onClick={handleWindowChange}>
+                        
+                    {tags.map(x=>{
+                        return(
+                            <Tags
+                                tag={x}
+                                key={props.product._id}
+                            />
+                        )
+                    })}
+                    </Container>
+        
+                <Button className="cartBtn" onClick={handleAddToCart}>
+                    Add to Cart
+                </Button>
+            </Card>
           );
 }
  

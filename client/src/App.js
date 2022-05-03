@@ -34,7 +34,7 @@ function App() {
 
 
   return (
-    <body>
+    <>
       <UserContext.Provider value={{userInfo, setUserInfo}} >
       <NavBarContext.Provider value={{navBarStatus, setNavBarStatus}}>
       <LogInAuthContext.Provider value={{logInStatus, setLogInStatus}}>
@@ -56,7 +56,7 @@ function App() {
         </LogInAuthContext.Provider>
       </NavBarContext.Provider>
       </UserContext.Provider>
-    </body>
+    </>
   );
 }
 

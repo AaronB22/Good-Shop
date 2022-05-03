@@ -1,7 +1,5 @@
 import { 
     Card,
-    Container,
-    Button,
     Carousel,
     Row,
     Col
@@ -17,11 +15,8 @@ const Home = () => {
     const [products, setProducts]= useState();
     const [loaded,setLoaded]= useState(false)
     useEffect(()=>{
-        console.log('home')
         fetch('/api/getAllProdsByCat/Phone')
         .then((res)=>{return(res.json())}).then((data)=>{
-            console.log(data)
-           
             setProducts(data)
             setLoaded(true)
         })
@@ -30,7 +25,6 @@ const Home = () => {
         setNavBarStatus('open')
     })
     const handleWindowChange=(e)=>{
-        console.log(e.target.id)
         window.location.assign('/productList/'+e.target.id)
     }
 
@@ -69,7 +63,9 @@ const Home = () => {
                     </Card.Text>
                     {products.map(x=>{
                         return(
-                            <Col className="FeatureProd">
+                            <Col className="FeatureProd"
+                                key={x._id}
+                            >
                                 <Product
                                     product={x}
                                 />

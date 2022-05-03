@@ -1,5 +1,5 @@
 import  './CreateAccount.scss'
-import {Container, Card, Form, Button, Alert} from "react-bootstrap";
+import { Card, Form, Button, Alert} from "react-bootstrap";
 import { NavBarContext } from '../../utils/navBarStatus';
 import { UserContext } from '../../utils/UserContext';
 import { LogInAuthContext } from '../../utils/LogInAuth';
@@ -8,8 +8,8 @@ import GoogleLogin from "react-google-login";
 
 const CreateAccount = () => {
     const { setNavBarStatus}= useContext(NavBarContext);
-    const {logInStatus, setLogInStatus} = useContext(LogInAuthContext);
-    const {userInfo, setUserInfo}= useContext(UserContext);
+    const { setLogInStatus} = useContext(LogInAuthContext);
+    const {setUserInfo}= useContext(UserContext);
     const [email, setEmail]=useState()
     const [password, setPassword]= useState()
     const [conPassword, setConPassword]= useState()
@@ -60,7 +60,6 @@ const CreateAccount = () => {
               }
         })
         if(res.status===400){
-            console.log('email in use')
             setEmailAlert('Email already used. Sign in?')
         }
         if(res.status===200){
@@ -99,7 +98,6 @@ const CreateAccount = () => {
             window.location.assign('./')
         }
         if(res.status===400){
-            console.log('email in use')
             setEmailAlert('Email already used. Sign in?')
         }
         
