@@ -11,7 +11,6 @@ const Product = () => {
         const url= '/api/productById/'+ params.id
         fetch(url).then(res=>{
             return(res.json())}).then(data=>{
-            console.log(data)
             setProduct(data[0])
             setLoaded(true)
         })
@@ -36,10 +35,12 @@ const Product = () => {
                             Product Tags:
                         </div>
                     <Container className='TagCont'>
-                        {product.tags.map(x=>{
+                        {product.tags.map((x, index)=>{
+                                console.log(index)
                                 return(
                                     <Tags
                                         tag={x}
+                                        key={index}
                                     />
                                 )
                             })}

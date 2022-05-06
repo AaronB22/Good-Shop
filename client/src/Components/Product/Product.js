@@ -4,15 +4,18 @@ import {
     Card,
     Container,
     Button,
+    Spinner
     } from "react-bootstrap";
 import './Product.scss'
 import { LogInAuthContext } from "../../utils/LogInAuth";
 import { UserContext } from "../../utils/UserContext";
 
 const Product = (props) => {
+    let tagKey = props.product._id
     const {userInfo}= useContext(UserContext)
     const [img, setImg]= useState()
     const {logInStatus}=useContext(LogInAuthContext)
+    const [loaded, setLoaded]= useState(false)
     const handleWindowChange=(e)=>{
         console.log(props.product._id)
         window.location.assign('/product/'+props.product._id)
@@ -48,11 +51,14 @@ const Product = (props) => {
             const file= new File([blob], "img")
             const url=window.URL.createObjectURL(file);
             setImg(url)
+            setLoaded(true)
 
         }
         getImg()
-    },[])
+    },[props.product.img])
     const tags=props.product.tags
+
+    if(loaded){
         return (
             <Card className="prodcard"
                 key={props.product._id}
@@ -77,11 +83,15 @@ const Product = (props) => {
                     </Container>
                     <Container className="TagCont" onClick={handleWindowChange}>
                         
-                    {tags.map(x=>{
+                    {tags.map((x, index)=>{
+
+                        tagKey += JSON.stringify(index)
+
                         return(
                             <Tags
                                 tag={x}
-                                key={props.product._id}
+                                id={tagKey}
+                                key={tagKey}
                             />
                         )
                     })}
@@ -92,6 +102,15 @@ const Product = (props) => {
                 </Button>
             </Card>
           );
+
+    }
+    if(!loaded){
+        return(<>
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </>)
+    }
 }
  
 export default Product;

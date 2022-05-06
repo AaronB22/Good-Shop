@@ -121,9 +121,6 @@ app.post('/api/upload',uploadMiddleware,(req, res)=>{
 app.get('/api/img/:id', (req, res) => {
   const id=req.params.id
   const _id = new mongoose.Types.ObjectId(id);
-  console.log(id)
-  console.log('getting img')
-
   gfs.find({'_id':_id}).toArray((err, files) => {
     if (!files || files.length === 0)
     return res.status(404).send('no files exist');

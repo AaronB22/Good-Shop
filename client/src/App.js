@@ -7,7 +7,7 @@ import { NavBarContext } from './utils/navBarStatus';
 import { UserContext } from './utils/UserContext';
 import { LogInAuthContext } from './utils/LogInAuth';
 import { CollaspeNavContext } from './utils/CollaspeNavContext';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [navBarStatus, setNavBarStatus] = useState('open')

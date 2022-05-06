@@ -11,17 +11,13 @@ const UploadProduct = () => {
         const myFile= img
         const fd= new FormData()
         fd.append('image',myFile,myFile.name)
-        console.log(fd)
 
         if(img,name,category,description,price){
             const resI= await fetch('/api/upload',{
                 method: "POST",
                 body:fd ,
                 })
-                console.log(resI)
             const data= await resI.json()
-            console.log(data)
-    
             const newProduct={
                 name:name,
                 description:description,
@@ -40,7 +36,6 @@ const UploadProduct = () => {
                   }
                 })
             const prodData= await res.json();
-            console.log(prodData)
             window.location.assign('/product/'+prodData[0]._id)
             
         }

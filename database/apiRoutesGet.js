@@ -7,11 +7,8 @@ const bcrypt = require('bcrypt');
 
 router.get('/api/getAllProdsByCat/:cat', async (req, res)=>{
     const params= req.params.cat
-    console.log('getting product')
-    console.log(params)
     try{
         const q= await Product.find({}).where('category').equals(params)
-        console.log(q)
         res.json(q)
     }
     catch(err){
@@ -21,11 +18,8 @@ router.get('/api/getAllProdsByCat/:cat', async (req, res)=>{
 
 router.get('/api/productById/:id', async (req, res)=>{
     const params= req.params.id
-    console.log('getting product')
-    console.log(params)
     try{
         const q= await Product.find({}).where('_id').equals(params);
-        console.log(q)
         res.json(q)
     }
     catch(err){
@@ -39,7 +33,6 @@ router.get("/search/:query", async (req, res)=>{
     const q= await Product.find({})
     let returnArr=[]
     for(let i=0;i<q.length; i++){
-        // console.log(q[i].name.includes(params))
         if(q[i].name.includes(params)){
             returnArr.push(q[i])
         }
