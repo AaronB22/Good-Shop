@@ -6,7 +6,8 @@ const Tags = (props) => {
     return ( 
         <>
         <Card className='Tag' style={{
-            backgroundColor:'lightBlue'
+            backgroundColor:'lightBlue',
+            fontSize:'18px',
         }}>
             {props.tag}
         </Card>

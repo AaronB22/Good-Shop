@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from 'react';
 
 
 const Home = () => {
+    let productCount=0;
     const {setNavBarStatus}= useContext(NavBarContext)
     const [products, setProducts]= useState();
     const [loaded,setLoaded]= useState(false)
@@ -37,7 +38,7 @@ const Home = () => {
                         src={require('../../assests/laptop.jpg')}
                         className='imgHome'
                         onClick={handleWindowChange}
-                        id='laptop'
+                        id='Laptop'
                         />
                     </Carousel.Item>
                     <Carousel.Item>
@@ -45,7 +46,7 @@ const Home = () => {
                         src={require('../../assests/tablet.jpg')}
                         className='imgHome'
                         onClick={handleWindowChange}
-                        id='tablet'
+                        id='Tablet'
                         />
                     </Carousel.Item>
                     <Carousel.Item>
@@ -53,7 +54,7 @@ const Home = () => {
                         src={require('../../assests/phone.jpg')}
                         className='imgHome'
                         onClick={handleWindowChange}
-                        id='phone'
+                        id='Phone'
                         />
                     </Carousel.Item>
                 </Carousel>
@@ -62,15 +63,19 @@ const Home = () => {
                         Featured Products:
                     </Card.Text>
                     {products.map(x=>{
-                        return(
-                            <Col className="FeatureProd"
-                                key={x._id}
-                            >
-                                <Product
-                                    product={x}
-                                />
-                            </Col>
-                        )
+                        productCount+=1;
+                        if(productCount<=10){
+                            return(
+                                <Col className="FeatureProd"
+                                    key={x._id}
+                                >
+                                    <Product
+                                        product={x}
+                                    />
+                                </Col>
+                            )
+
+                        }
                     })}
     
 

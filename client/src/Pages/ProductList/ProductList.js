@@ -15,7 +15,7 @@ const ProductList = () => {
         setPriceNumber(x.target.value)
     }
     useEffect(()=>{
-        console.log(window.location)
+        console.log(category.category)
         if(window.location.pathname.includes("search")){
             fetch("/search/"+category.category).then(res=>{
                 return(res.json())

@@ -118,19 +118,20 @@ app.post('/api/upload',uploadMiddleware,(req, res)=>{
  
 })
 
-app.get('/api/img', ({ params: { id } }, res) => {
-  console.log('img get')
-  // if no id return error
-  // if (!id || id === 'undefined') return res.status(400).send('no image id');
-  // if there is an id string, cast it to mongoose's objectId type
+app.get('/api/img/:id', (req, res) => {
+  const id=req.params.id
   const _id = new mongoose.Types.ObjectId(id);
+  console.log(id)
+  console.log('getting img')
 
-  gfs.find().toArray((err, files) => {
+  gfs.find({'_id':_id}).toArray((err, files) => {
     if (!files || files.length === 0)
-      return res.status(400).send('no files exist');
+    return res.status(404).send('no files exist');
     gfs.openDownloadStream(files[0]._id).pipe(res);
+
   });
 });
+
 
 
 app.use(require('./database/apiRoutesGet'))

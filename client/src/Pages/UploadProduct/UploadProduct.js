@@ -28,7 +28,7 @@ const UploadProduct = () => {
                 category:category,
                 img: data,
                 price:price,
-                tags:["deliever, new, 120hz, 4k"]
+                tags:["deliever", "new", "120hz"]
             }
             
             const res= await fetch('/api/newProduct',{
@@ -78,7 +78,6 @@ const UploadProduct = () => {
                             setCategory(x.target.value)
                     }}>
                     <Form.Label>Category</Form.Label>
-                    {/* <Form.Control/> */}
                     <Form.Text className="text-muted">
                     </Form.Text>
                     <Dropdown>
@@ -98,7 +97,7 @@ const UploadProduct = () => {
                             onClick={(x)=>setCategory(x.target.firstChild.data)}
                         >
                             <Dropdown.Item href="#/action-1">Phone</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">LapTop</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Laptop</Dropdown.Item>
                             <Dropdown.Item href="#/action-3">Tablet</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

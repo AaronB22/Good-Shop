@@ -11,6 +11,7 @@ import { UserContext } from "../../utils/UserContext";
 
 const Product = (props) => {
     const {userInfo}= useContext(UserContext)
+    const [img, setImg]= useState()
     const {logInStatus}=useContext(LogInAuthContext)
     const handleWindowChange=(e)=>{
         console.log(props.product._id)
@@ -39,31 +40,28 @@ const Product = (props) => {
             alert("Need to be Logged In")
         }
     }
+
+    useEffect(()=>{
+        const getImg=async()=>{
+            const res= await fetch('/api/img/'+props.product.img)
+            const blob= await res.blob()
+            const file= new File([blob], "img")
+            const url=window.URL.createObjectURL(file);
+            setImg(url)
+
+        }
+        getImg()
+    },[])
     const tags=props.product.tags
         return (
             <Card className="prodcard"
                 key={props.product._id}
             >
                 <Container className= "contImg">
-                {(()=>{
-                    try{
-                        return(
-                            <img
+                 <img
                             className="prodImg"
-                            src={require(props.product.img)}
+                            src={img}
                             />
-                        )
-                    }
-                    catch(err){
-                        return(
-                            <img
-                            className="prodImg"
-                            src={require('../../assests/phone.jpg')}
-                            />
-                        )
-                    }
-
-                })()}
                 </Container>
                 <Card.Text className="priceCard" onClick={handleWindowChange}>
                             ${props.product.price}
