@@ -4,7 +4,10 @@ const Category= require('./models/Category')
 const User= require('./models/User')
 const bcrypt = require('bcrypt');
 
+
+
 router.post('/api/createNewProduct',  ({body},res)=>{
+    console.log('newProduct')
     Product.insertMany(body)
         .then(x=>{
             res.json(x)
@@ -130,9 +133,9 @@ router.post('/api/googlevalidate', async({body}, res)=>{
 router.post('/api/newProduct', async({body}, res)=>{
     console.log(body)
     try{
-        await Product.insertMany(body)
+       const newProduct= await Product.insertMany(body)
         console.log('done')
-         res.status(200)
+         res.status(200).json(newProduct)
 
     }
     catch(err){
