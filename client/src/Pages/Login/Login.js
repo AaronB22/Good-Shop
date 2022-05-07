@@ -8,9 +8,9 @@ import { useContext, useEffect, useState } from 'react';
 
 const Login = () => {
     const [loaded, setLoaded]= useState(false)
-    const {logInStatus, setLogInStatus} = useContext(LogInAuthContext);
-    const {navBarStatus, setNavBarStatus}= useContext(NavBarContext);
-    const {userInfo, setUserInfo}= useContext(UserContext);
+    const {setLogInStatus} = useContext(LogInAuthContext);
+    const { setNavBarStatus}= useContext(NavBarContext);
+    const { setUserInfo}= useContext(UserContext);
     const [email, setEmail]=useState()
     const [password, setPassword]= useState()
     useEffect(()=>{
@@ -62,12 +62,11 @@ const Login = () => {
                 'Content-Type': 'application/json',
               }
         })
-        console.log(res)
       
       if(res.status===200){
           const data= await res.json()
-          console.log(data)
           setUserInfo(data)
+          setLogInStatus(true)
           window.localStorage.setItem('userData', JSON.stringify(data))
           window.location.assign('/')
       }

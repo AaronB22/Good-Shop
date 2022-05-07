@@ -1,5 +1,5 @@
 import Product from "../../Components/Product/Product";
-import { Card, Col,Row, Form, Container, DropdownButton, Dropdown, Alert } from "react-bootstrap";
+import { Card, Col,Row, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect , useState} from "react";
 import './ProductList.scss'
@@ -15,7 +15,6 @@ const ProductList = () => {
         setPriceNumber(x.target.value)
     }
     useEffect(()=>{
-        console.log(window.location)
         if(window.location.pathname.includes("search")){
             fetch("/search/"+category.category).then(res=>{
                 return(res.json())
@@ -39,7 +38,7 @@ const ProductList = () => {
             })
 
         }
-    },[])
+    },[category.category])
     if(loaded){
         return ( 
         <>
@@ -68,9 +67,10 @@ const ProductList = () => {
         <Row>
             {products.map(x=>{
                 if(x.price<priceNumber){
-                    console.log(x.price)
                     return(
-                        <Col>
+                        <Col
+                            key={x._id}
+                        >
                             <Product
                                 product={x}
                             />

@@ -1,6 +1,6 @@
 .singleProdImg{
-    aspect-ratio: 16/9;
-    width: 40rem;
+    // aspect-ratio: 16/9;
+    height: 300px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -28,6 +28,9 @@
     display: flex;
     margin-bottom: 5px;
     flex-direction: row;
+  }
+  .tagProdPage{
+      margin-left: 10px;
   }
 
   @media screen and (max-width: 800px){

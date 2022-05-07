@@ -2,8 +2,8 @@
     margin-top: 2rem;
 }
 .cartImg{
-    aspect-ratio: 16/9;
-    height: 12rem;
+    height: inherit;
+    margin-left: 1rem;
 }
 
 .cartTitleDiv{
@@ -57,8 +57,10 @@
     text-align: center;
 }
 .desCont{
-    width: 30%;
-    overflow: scroll;
+    width: 20rem;
+    height: 10rem;
+
+  
 }
 
 .priceDiv{
@@ -149,6 +151,11 @@
         position: relative;
         top:9.5rem;
         right: 23rem;
+    }
+    .desCont{
+        width: 30%;
+       
+      
     }
 }
 @media screen and( max-width: 600px) {

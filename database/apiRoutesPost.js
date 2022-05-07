@@ -4,6 +4,8 @@ const Category= require('./models/Category')
 const User= require('./models/User')
 const bcrypt = require('bcrypt');
 
+
+
 router.post('/api/createNewProduct',  ({body},res)=>{
     Product.insertMany(body)
         .then(x=>{
@@ -21,8 +23,6 @@ router.post('/api/createCategory',({body},res)=>{
 router.post('/api/newUser',async({body},res)=>{
     try{
         const user= await User.find({}).where('email').equals(body.email)
-        console.log(user)
-        console.log(user.length)
         if(user.length===0){
             const newUser= body;
             if(newUser.password){
@@ -128,11 +128,9 @@ router.post('/api/googlevalidate', async({body}, res)=>{
 })
 
 router.post('/api/newProduct', async({body}, res)=>{
-    console.log(body)
     try{
-        await Product.insertMany(body)
-        console.log('done')
-         res.status(200)
+       const newProduct= await Product.insertMany(body)
+         res.status(200).json(newProduct)
 
     }
     catch(err){
@@ -170,15 +168,13 @@ router.post('/api/addToCart', async({body},res)=>{
 })
 
 router.post('/api/removeFromCart', async({body},res)=>{
-    console.log(body)
+
     const req= await User.find({}).where("_id").equals(body.userId)
-    console.log(req[0].cart)
     const currentCart=req[0].cart;
     const newCart= [];
     for(let i=0; i<currentCart.length; i++){
         if(currentCart[i]!==body.cartId){
             newCart.push(currentCart[i])
-            console.log(newCart)
         }
 
     }

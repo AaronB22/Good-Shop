@@ -1,34 +1,55 @@
 import { useState } from "react";
-import { FilePond } from "filepond";
-import {Container, Card, Form, Button, Alert, Dropdown} from "react-bootstrap";
+import { Form, Button, Dropdown} from "react-bootstrap";
 
 const UploadProduct = () => {
-    const [img, setImg]= useState(require('../../assests/phone.jpg'))
+    const [img, setImg]= useState()
     const [name, setName]= useState()
     const [category, setCategory]= useState('Choose Category...');
     const [description, setDescription]= useState()
     const [price, setPrice]= useState()
     const uploadNewProduct=async(e)=>{
+        const myFile= img
+        const fd= new FormData()
+        fd.append('image',myFile,myFile.name)
 
-
-        const newProduct={
-            name:name,
-            description:description,
-            category:category,
-            img: img,
-            price:price,
-            tags:["deliever, new, 4k"]
+        if(img,name,category,description,price){
+            const resI= await fetch('/api/upload',{
+                method: "POST",
+                body:fd ,
+                })
+            const data= await resI.json()
+            const newProduct={
+                name:name,
+                description:description,
+                category:category,
+                img: data,
+                price:price,
+                tags:["deliever", "new", "120hz"]
+            }
+            
+            const res= await fetch('/api/newProduct',{
+                method: "POST",
+                body: JSON.stringify(newProduct),
+                headers: {
+                    Accept: 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                  }
+                })
+            const prodData= await res.json();
+            window.location.assign('/product/'+prodData[0]._id)
+            
         }
-        const res= await fetch('/api/newProduct',{
-            method: "POST",
-            body: JSON.stringify(newProduct),
-            headers: {
-                Accept: 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-              }
-            })
-        console.log(res)
+        else{
+            alert('You must fill out all fields')
+        }
+
+
     }
+
+    const uploadImg=async (e)=>{
+        setImg(e.target.files[0])
+    }
+    
     return ( 
         <>
             <Form>
@@ -52,7 +73,6 @@ const UploadProduct = () => {
                             setCategory(x.target.value)
                     }}>
                     <Form.Label>Category</Form.Label>
-                    {/* <Form.Control/> */}
                     <Form.Text className="text-muted">
                     </Form.Text>
                     <Dropdown>
@@ -72,7 +92,7 @@ const UploadProduct = () => {
                             onClick={(x)=>setCategory(x.target.firstChild.data)}
                         >
                             <Dropdown.Item href="#/action-1">Phone</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">LapTop</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Laptop</Dropdown.Item>
                             <Dropdown.Item href="#/action-3">Tablet</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -85,29 +105,30 @@ const UploadProduct = () => {
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group className="mb-3" onChange={(x)=>{
-                            setImg(x.target.value)
-                    }}>
-                    <Form.Label>Image URL</Form.Label>
-                    <Form.Control/>
-                    <Form.Text className="text-muted">
-                    </Form.Text>
+                <Form.Group className="mb-3">
+                    <Form.Label>Product Image</Form.Label>
+                        <input type='file' name='file' id='file'
+                        onChange={uploadImg}
+                        />
                 </Form.Group>
-                     {/* <input type='file' onChange={uploadImg}/> */}
+                
+                      
+                    <Button style={{
+                        width:'50%',
+                    }}
+                    onClick={uploadNewProduct}
+                    >
+                        Submit
+                    </Button>
+                
             </Form>
-            <Button style={{
-                width:'50%',
-            }}
-            onClick={uploadNewProduct}
-            >
-                Submit
-            </Button>
             <img
                 style={{
                     aspectRatio:'16:9',
                     width:'30rem'
                 }}
                 src={img}
+                alt='Product Image'
             />
         
         

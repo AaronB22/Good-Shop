@@ -7,27 +7,34 @@ import { NavBarContext } from './utils/navBarStatus';
 import { UserContext } from './utils/UserContext';
 import { LogInAuthContext } from './utils/LogInAuth';
 import { CollaspeNavContext } from './utils/CollaspeNavContext';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [navBarStatus, setNavBarStatus] = useState('open')
   const [userInfo, setUserInfo]= useState()
   const [collaspeState, setCollaspeState]= useState('collaspe')
-  const [logInStatus, setLogInStatus]=useState()
+  const [logInStatus, setLogInStatus]=useState(true)
   useEffect(()=>{
-    const userData= window.localStorage.getItem('userData');
-    if(userData){
-      const parsedUserData= JSON.parse(userData);
-        if(parsedUserData){
-          setUserInfo(parsedUserData)
-          setLogInStatus(true)
-        }
+    const getLocalData=()=>{
+      const userData= window.localStorage.getItem('userData');
+      if(userData){
+        const parsedUserData= JSON.parse(userData);
+          if(parsedUserData){
+            setUserInfo(parsedUserData)
+            setLogInStatus(true)
+          }
+      }
+      if(!userData){
+        setLogInStatus(false)
+      }
+
     }
+    getLocalData()
   },[])
 
 
   return (
-    <body>
+    <>
       <UserContext.Provider value={{userInfo, setUserInfo}} >
       <NavBarContext.Provider value={{navBarStatus, setNavBarStatus}}>
       <LogInAuthContext.Provider value={{logInStatus, setLogInStatus}}>
@@ -49,7 +56,7 @@ function App() {
         </LogInAuthContext.Provider>
       </NavBarContext.Provider>
       </UserContext.Provider>
-    </body>
+    </>
   );
 }
 

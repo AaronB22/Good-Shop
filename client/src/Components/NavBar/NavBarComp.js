@@ -108,6 +108,7 @@ const NavBarComp = () => {
         
                                         <Dropdown.Menu>
                                             <Dropdown.Item className='text-danger' onClick={handleShow}>Log Out</Dropdown.Item>
+                                            <Dropdown.Item className='text-danger' onClick={()=>window.location.assign('/admin/upload')}>Upload Product</Dropdown.Item>
                                         </Dropdown.Menu>
                                         </Dropdown>
                                     </>

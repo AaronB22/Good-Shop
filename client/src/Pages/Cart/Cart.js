@@ -3,15 +3,19 @@ import { useState, useEffect, useContext } from 'react';
 import { Card, Col, Row, Button, Spinner } from 'react-bootstrap';
 import { UserContext } from '../../utils/UserContext';
 
+import CartComp from '../../Components/CartComp/CartComp';
+
 const Cart = () => {
     const [Loaded, setLoaded]= useState();
     const [Cart, setCart]= useState([])
+  
     const [itemCount, setItemCount]=useState()
-    const {userInfo, setUserInfo}= useContext(UserContext)
+    const {userInfo}= useContext(UserContext)
     
     useEffect(()=>{
         setItemCount(Cart.length)
     },[Cart])
+
    
 
     useEffect(()=>{
@@ -25,7 +29,6 @@ const Cart = () => {
                     for(let i=0; i<oldcart.length;i++){
                        const r= await fetch('/api/productById/'+oldcart[i])
                        const productInfo= await r.json()
-                       
                        setCart((oldArr)=>[...oldArr, productInfo[0]])
                     }
                     setLoaded(true)
@@ -35,9 +38,9 @@ const Cart = () => {
             }
             getProductId()
 
-        }
+        };
         
-    },[userInfo, setCart])
+    },[userInfo, setCart,])
     
 
 
@@ -54,26 +57,25 @@ const Cart = () => {
                 'Content-Type': 'application/json',
               }
             } )
-        // window.location.reload()
+        window.location.reload()
     }
 
 
     if(Loaded){
         let price=0;
         for (let i=0; i<itemCount;i++){
-            console.log(Cart[i].price)
             price+=Cart[i].price;
         }
-        console.log(price)
+        const tax= (price/100)*6.52
         return (  
             <>
                 <div className='spanMarginTop'></div>
                 <div className='cartTitleDiv'>
                     <h1>
-                        Shopping Cart ({itemCount} items )
+                        Shopping Cart ({itemCount} items)
                     </h1>
                     <div className='removeAllText' onClick={removeAll}>
-                            Remove All Itms
+                            Remove All Items
                     </div>
                     <div className='priceLabel'>
                            Price
@@ -82,54 +84,12 @@ const Cart = () => {
                 </div>
                 <div className='mainCartDiv'>
                     {Cart.map(x=>{
-                        const removeFromCart=async(e)=>{
-                            console.log(e)
-                            console.log(x._id)
-                            const deleteObj={
-                                "cartId":x._id,
-                                "userId":userInfo.id,
-                                "email":userInfo.email
-                            }
-                            await fetch('/api/removeFromCart',{
-                                method: "POST",
-                                body:JSON.stringify(deleteObj),
-                                headers: {
-                                    Accept: 'application/json, text/plain, */*',
-                                    'Content-Type': 'application/json',
-                                }
-                                } )
-                            window.location.reload()
-                        }
-        
+
                         return(
-                            <>
-                
-                        <div className='ProductCard'>
-                            <div className='imgCont'>
-                                <img src={require('../../assests/phone.jpg')} className='cartImg'/>
-
-                            </div>
-                            <div className='mainCartProdBlock'>
-                                <h2 className='titleCart'>
-                                    {x.name}
-                                </h2>
-                                <div className='desCont'>
-                                    {x.description}
-                                </div>
-                            </div>
-                            <div className='priceCartCont'>
-                                <div className='priceDiv'>${x.price}</div>
-                                    <Button className='removeBtn' variant='danger'
-                                    onClick={removeFromCart}
-                                    >
-                                        REMOVE
-                                    </Button>
-                            </div>
-
-
-                        </div>
-                            
-                            </>
+                            <CartComp
+                            key={x._id}
+                            product={x}
+                            />
                         )
                     })}
 
@@ -162,6 +122,19 @@ const Cart = () => {
                             
                             </Col>
                         </Row>
+                        <Row>
+                            <Col>
+                                <div className='items'>
+                                   Tax:
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className='totalprice'>
+                                    ${tax}
+                                </div>
+                            
+                            </Col>
+                        </Row>
 
                         <div className='bottomCardCart'>
                         <Row >
@@ -170,7 +143,7 @@ const Cart = () => {
                             <h3 className='totalTitle'>TOTAL COST:</h3>
                             </Col>
                             <Col>
-                            <div className='totalPrice'>${price}</div>
+                            <div className='totalPrice'>${price+tax}</div>
                                 
                             </Col>
                         </Row>

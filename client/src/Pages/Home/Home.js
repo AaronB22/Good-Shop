@@ -1,7 +1,5 @@
 import { 
     Card,
-    Container,
-    Button,
     Carousel,
     Row,
     Col
@@ -13,15 +11,13 @@ import { useContext, useEffect, useState } from 'react';
 
 
 const Home = () => {
+    let productCount=0;
     const {setNavBarStatus}= useContext(NavBarContext)
     const [products, setProducts]= useState();
     const [loaded,setLoaded]= useState(false)
     useEffect(()=>{
-        console.log('home')
         fetch('/api/getAllProdsByCat/Phone')
         .then((res)=>{return(res.json())}).then((data)=>{
-            console.log(data)
-           
             setProducts(data)
             setLoaded(true)
         })
@@ -30,7 +26,6 @@ const Home = () => {
         setNavBarStatus('open')
     })
     const handleWindowChange=(e)=>{
-        console.log(e.target.id)
         window.location.assign('/productList/'+e.target.id)
     }
 
@@ -43,7 +38,8 @@ const Home = () => {
                         src={require('../../assests/laptop.jpg')}
                         className='imgHome'
                         onClick={handleWindowChange}
-                        id='laptop'
+                        id='Laptop'
+                        alt="Laptop Category"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
@@ -51,7 +47,8 @@ const Home = () => {
                         src={require('../../assests/tablet.jpg')}
                         className='imgHome'
                         onClick={handleWindowChange}
-                        id='tablet'
+                        id='Tablet'
+                        alt="Tablet Category"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
@@ -59,7 +56,8 @@ const Home = () => {
                         src={require('../../assests/phone.jpg')}
                         className='imgHome'
                         onClick={handleWindowChange}
-                        id='phone'
+                        id='Phone'
+                        alt="Phone Category"
                         />
                     </Carousel.Item>
                 </Carousel>
@@ -68,13 +66,19 @@ const Home = () => {
                         Featured Products:
                     </Card.Text>
                     {products.map(x=>{
-                        return(
-                            <Col className="FeatureProd">
-                                <Product
-                                    product={x}
-                                />
-                            </Col>
-                        )
+                        productCount+=1;
+                        if(productCount<=10){
+                            return(
+                                <Col className="FeatureProd"
+                                    key={x._id}
+                                >
+                                    <Product
+                                        product={x}
+                                    />
+                                </Col>
+                            )
+
+                        }
                     })}
     
 
