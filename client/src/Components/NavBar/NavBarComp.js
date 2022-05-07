@@ -107,8 +107,8 @@ const NavBarComp = () => {
                                         </Dropdown.Toggle>
         
                                         <Dropdown.Menu>
+                                            <Dropdown.Item className='' onClick={()=>window.location.assign('/admin/upload')}>Upload Product</Dropdown.Item>
                                             <Dropdown.Item className='text-danger' onClick={handleShow}>Log Out</Dropdown.Item>
-                                            <Dropdown.Item className='text-danger' onClick={()=>window.location.assign('/admin/upload')}>Upload Product</Dropdown.Item>
                                         </Dropdown.Menu>
                                         </Dropdown>
                                     </>
@@ -157,11 +157,6 @@ const NavBarComp = () => {
                         <h3 onClick={()=>window.location.assign('/home')}>
                             React ECOM
                         </h3>
-                {/* <Form className='searchformsmall'>
-                        <Form.Group className="mb-3 searchsmall" >
-                            <Form.Control placeholder="search..." />
-                        </Form.Group>
-                    </Form> */}
                     <Form className="searchformsmall">
                         <Row>
                                 <Col>
