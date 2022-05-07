@@ -6,14 +6,29 @@ import Tags from '../../Components/Tags/Tags';
 const Product = () => {
     const [product, setProduct]= useState()
     const [loaded, setLoaded]= useState(false)
+    const [img, setImg]= useState()
     const params= useParams()
     useEffect(()=>{
         const url= '/api/productById/'+ params.id
-        fetch(url).then(res=>{
-            return(res.json())}).then(data=>{
-            setProduct(data[0])
-            setLoaded(true)
-        })
+        // fetch(url).then(res=>{
+        //     return(res.json())}).then(data=>{
+        //     })
+            const getProd=async()=>{
+                const prodRes= await fetch(url);
+                const prodData= await prodRes.json()
+                const prod=prodData[0]
+                const res= await fetch('/api/img/'+prod.img)
+                const blob= await res.blob()
+                const file= new File([blob], "img")
+                const imageUrl=window.URL.createObjectURL(file);
+                setProduct(prod)
+                setImg(imageUrl)
+                setLoaded(true)
+
+            }
+            getProd()
+
+
     }, [])
     if(loaded){
         return ( 
@@ -24,7 +39,7 @@ const Product = () => {
                     </div>
                     <img 
                     className='singleProdImg'
-                    src={require('../../assests/phone.jpg')}/>
+                    src={img}/>
                     <div className='singlePrice'>
                         ${product.price}
                     </div>
@@ -36,12 +51,16 @@ const Product = () => {
                         </div>
                     <Container className='TagCont'>
                         {product.tags.map((x, index)=>{
-                                console.log(index)
                                 return(
-                                    <Tags
-                                        tag={x}
-                                        key={index}
-                                    />
+                                    <div
+                                    key={index}
+                                    className='tagProdPage'
+                                    >
+                                        <Tags
+                                            tag={x}
+                                        />
+
+                                    </div>
                                 )
                             })}
 
