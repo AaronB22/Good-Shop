@@ -17,7 +17,6 @@ const Product = (props) => {
     const {logInStatus}=useContext(LogInAuthContext)
     const [loaded, setLoaded]= useState(false)
     const handleWindowChange=(e)=>{
-        console.log(props.product._id)
         window.location.assign('/product/'+props.product._id)
     }
     const handleAddToCart=async(e)=>{

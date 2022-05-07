@@ -1,18 +1,20 @@
 import './Product.scss'
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { Row, Card, Container, Button } from 'react-bootstrap';
+import { useEffect, useState, useContext } from 'react';
+import { Card, Container, Button } from 'react-bootstrap';
 import Tags from '../../Components/Tags/Tags';
+import { LogInAuthContext } from "../../utils/LogInAuth";
+import { UserContext } from "../../utils/UserContext";
+
 const Product = () => {
     const [product, setProduct]= useState()
     const [loaded, setLoaded]= useState(false)
     const [img, setImg]= useState()
+    const {logInStatus}=useContext(LogInAuthContext)
+    const {userInfo}= useContext(UserContext)
     const params= useParams()
     useEffect(()=>{
         const url= '/api/productById/'+ params.id
-        // fetch(url).then(res=>{
-        //     return(res.json())}).then(data=>{
-        //     })
             const getProd=async()=>{
                 const prodRes= await fetch(url);
                 const prodData= await prodRes.json()
@@ -30,6 +32,31 @@ const Product = () => {
 
 
     }, [])
+    const handleAddToCart=async(e)=>{
+        if(logInStatus){
+            alert('Added to Cart')
+            const newCart={
+                "_id":userInfo.id,
+                "email":userInfo.email,
+                "cart":product._id
+                
+            }
+            const cart=await fetch('/api/addToCart',{
+             method: "POST",
+             body: JSON.stringify(newCart),
+             headers: {
+                 Accept: 'application/json, text/plain, */*',
+                 'Content-Type': 'application/json',
+               }
+             } )
+
+        }
+        if(!logInStatus){
+            alert("Need to be Logged In")
+        }
+    }
+
+
     if(loaded){
         return ( 
             <>
@@ -65,7 +92,7 @@ const Product = () => {
                             })}
 
                     </Container>
-                    <Button >
+                    <Button onClick={handleAddToCart}>
                         ADD TO CART
                     </Button>
                 </Card>

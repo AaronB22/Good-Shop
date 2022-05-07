@@ -64,10 +64,9 @@ const Cart = () => {
     if(Loaded){
         let price=0;
         for (let i=0; i<itemCount;i++){
-            console.log(Cart[i].price)
             price+=Cart[i].price;
         }
-        console.log(price)
+        const tax= (price/100)*6.52
         return (  
             <>
                 <div className='spanMarginTop'></div>
@@ -88,6 +87,7 @@ const Cart = () => {
 
                         return(
                             <CartComp
+                            key={x._id}
                             product={x}
                             />
                         )
@@ -122,6 +122,19 @@ const Cart = () => {
                             
                             </Col>
                         </Row>
+                        <Row>
+                            <Col>
+                                <div className='items'>
+                                   Tax:
+                                </div>
+                            </Col>
+                            <Col>
+                                <div className='totalprice'>
+                                    ${tax}
+                                </div>
+                            
+                            </Col>
+                        </Row>
 
                         <div className='bottomCardCart'>
                         <Row >
@@ -130,7 +143,7 @@ const Cart = () => {
                             <h3 className='totalTitle'>TOTAL COST:</h3>
                             </Col>
                             <Col>
-                            <div className='totalPrice'>${price}</div>
+                            <div className='totalPrice'>${price+tax}</div>
                                 
                             </Col>
                         </Row>
