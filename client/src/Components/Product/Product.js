@@ -28,7 +28,7 @@ const Product = (props) => {
                 "cart":props.product._id
                 
             }
-            const cart=await fetch('/api/addToCart',{
+            await fetch('/api/addToCart',{
              method: "POST",
              body: JSON.stringify(newCart),
              headers: {
@@ -66,6 +66,7 @@ const Product = (props) => {
                  <img
                             className="prodImg"
                             src={img}
+                            alt='Product Image'
                             />
                 </Container>
                 <Card.Text className="priceCard" onClick={handleWindowChange}>
@@ -78,6 +79,7 @@ const Product = (props) => {
                     <img
                             className="prodRate"
                             src={require('../../assests/star.png')}
+                            alt="Star Rating. 5 stars"
                         />
                     </Container>
                     <Container className="TagCont" onClick={handleWindowChange}>

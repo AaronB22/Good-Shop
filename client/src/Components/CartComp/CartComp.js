@@ -23,7 +23,7 @@ const CartComp = (props) => {
             getProd()
 
 
-    }, [])
+    }, [x.img])
     
 
 
@@ -51,7 +51,7 @@ const CartComp = (props) => {
                 key={x._id}
             >
                 <div className='imgCont'>
-                    <img src={img} className='cartImg'/>
+                    <img src={img} className='cartImg' alt="Product Image"/>
     
                 </div>
                 <div className='mainCartProdBlock'>

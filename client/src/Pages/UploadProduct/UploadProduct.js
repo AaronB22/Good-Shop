@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Container, Card, Form, Button, Alert, Dropdown} from "react-bootstrap";
+import { Form, Button, Dropdown} from "react-bootstrap";
 
 const UploadProduct = () => {
     const [img, setImg]= useState()
@@ -128,6 +128,7 @@ const UploadProduct = () => {
                     width:'30rem'
                 }}
                 src={img}
+                alt='Product Image'
             />
         
         

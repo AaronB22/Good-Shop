@@ -38,7 +38,7 @@ const ProductList = () => {
             })
 
         }
-    },[])
+    },[category.category])
     if(loaded){
         return ( 
         <>

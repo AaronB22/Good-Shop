@@ -31,7 +31,7 @@ const Product = () => {
             getProd()
 
 
-    }, [])
+    }, [params.id])
     const handleAddToCart=async(e)=>{
         if(logInStatus){
             alert('Added to Cart')
@@ -41,7 +41,7 @@ const Product = () => {
                 "cart":product._id
                 
             }
-            const cart=await fetch('/api/addToCart',{
+            await fetch('/api/addToCart',{
              method: "POST",
              body: JSON.stringify(newCart),
              headers: {
@@ -66,7 +66,9 @@ const Product = () => {
                     </div>
                     <img 
                     className='singleProdImg'
-                    src={img}/>
+                    src={img}
+                    alt='Product Image'
+                    />
                     <div className='singlePrice'>
                         ${product.price}
                     </div>

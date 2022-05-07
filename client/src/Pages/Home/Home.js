@@ -39,6 +39,7 @@ const Home = () => {
                         className='imgHome'
                         onClick={handleWindowChange}
                         id='Laptop'
+                        alt="Laptop Category"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
@@ -47,6 +48,7 @@ const Home = () => {
                         className='imgHome'
                         onClick={handleWindowChange}
                         id='Tablet'
+                        alt="Tablet Category"
                         />
                     </Carousel.Item>
                     <Carousel.Item>
@@ -55,6 +57,7 @@ const Home = () => {
                         className='imgHome'
                         onClick={handleWindowChange}
                         id='Phone'
+                        alt="Phone Category"
                         />
                     </Carousel.Item>
                 </Carousel>
