@@ -50,13 +50,29 @@
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
-.catHeader{
-   
+.accountBtn{
+    margin-top: 5px;
+    width: 100%;
+}
+.logOut{
+    background-color: red !important;
+}
+.modelCollaspe{
+    width: 400px !important;
 }
 
 @media screen and( max-width: 530px) {
     .collaspeBlock{
         width: 200px;
+    }
+    .modelCollaspe{
+        width: 200px !important;
+    }
+    .modelBtn{
+        width: 80px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 12px !important;
     }
     
 }
