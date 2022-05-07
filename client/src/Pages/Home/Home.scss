@@ -20,11 +20,17 @@
 @media screen and( max-width: 1000px) {
     .car-block{
         width: 600px;
+        height: 338px;
+    }
+    .imgHome{
+        width: inherit;
+        height: inherit;
     }
 }
 @media screen and( max-width: 830px) {
     .car-block{
         width: 500px;
+        height: 228px;
 
     }
     .featured{
@@ -34,7 +40,8 @@
 }
 @media screen and( max-width: 700px) {
     .car-block{
-        width: 400px;
+        width: 300px;
+        height: 168px;
     }
 }
 @media screen and( max-width: 400px) {
@@ -45,5 +52,6 @@
 @media screen and( max-width: 300px) {
     .car-block{
         width: 200px;
+        height: 138;
     }
 }

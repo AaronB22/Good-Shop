@@ -8,6 +8,7 @@ const ProductList = () => {
     const category = useParams()
     const cat= category.category
     const cap= cat.charAt(0).toUpperCase()+cat.slice(1)
+    const [hasData, setHasData]= useState(false)
     const [products, setProducts]= useState();
     const [loaded,setLoaded]= useState(false)
     const [priceNumber, setPriceNumber]= useState(1600)
@@ -21,11 +22,14 @@ const ProductList = () => {
             }).then(data=>{
                 if(data.length!==0){
                     setProducts(data)
-
+                    setHasData(true)
                 }
                 if(data.length===0){
-                    alert("No results :(")
+                    // alert("No results :(")
                     setProducts(data)
+                    // return(<>
+                    //     <h1>No Results</h1>
+                    // </>)
                 }
                 setLoaded(true)
             })
@@ -34,12 +38,13 @@ const ProductList = () => {
             fetch('/api/getAllProdsByCat/'+category.category)
             .then((res)=>{return(res.json())}).then((data)=>{
                 setProducts(data)
+                setHasData(true)
                 setLoaded(true)
             })
 
         }
     },[category.category])
-    if(loaded){
+    if(loaded && hasData){
         return ( 
         <>
         
@@ -87,6 +92,12 @@ const ProductList = () => {
             <h1>
                 Loading...
             </h1>
+        )
+    }
+    if(loaded && !hasData){
+        return(
+                <div className="notFound">Search for -<span className="notFoundSearch">{category.category}</span>- did not find any matches</div>
+            
         )
     }
 }

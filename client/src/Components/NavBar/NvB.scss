@@ -4,15 +4,20 @@
     background: $primary-color;
     margin-left: auto;
     margin-right: auto;
+    height: 7rem;
 }
+
 
 .customFont{
     font-size: 1.5rem;
 }
 
 .header{
+    width:10%;
     padding-right: 3rem;
+    font-size: 3rem !important;
     cursor: pointer;
+    margin-bottom: 2rem;
 }
 
 .navCont{
@@ -21,14 +26,16 @@
 }
 
 .search{
-    width: 38rem;
+    width: 50rem;
     height: 1.2rem;
+    
 }
 .searchBtn{
     width: 2;
     height: 1.2rem;
     margin-top: .6rem;
     cursor: pointer;
+    margin-bottom: 2rem;
 }
 .searchsmall{
     height: 1.5rem;
@@ -53,6 +60,7 @@
 .cart{
     width: 2rem;
     cursor: pointer;
+    margin-bottom: 1rem;
 }
 .collaspeBar{
     margin-left: 1rem;
@@ -66,8 +74,92 @@
     background-color: $primary-color !important;
     border: $primary-color !important;
 }
+.accountInfo{
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.customDrop{
+    margin-right: 2rem;
+}
+.navBottomDiv{
+    position: absolute;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 2.2rem;
+    background-color: $sec-color;
+}
+.navBottomRow{
+    width: 90%;
+}
+.catDropDown{
+    height: 20rem;
+    width: 20rem;
+}
+.dropItemCat{
+    font-size: 2rem;
+    font-weight: 100 !important;
+    
+}
+.bottomBarItem{
+   font-size: 1rem ;
+   cursor: pointer;
+}
+.bottomBarItemText{
+    font-size: 1.5rem;
+    color: $sec-font-color;
+}
+
+.dropBtnCat{
+    height: 2rem;
+    background-color: $primary-color !important;
+    border: $primary-color !important;
+}
+.dropDownBottom{
+    height: 2rem;
+    // background-color: $primary-color !important;
+    // border: $primary-color !important;
+    background-color: $sec-color !important;
+    border-color: $sec-color !important;
+}
+
+.HamBtn{
+    width: 5rem;
+    
+}
+.blackoutClosed{
+    visibility: hidden;
+}
+
+.blackout{
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    opacity: 50%;
+    z-index: 5;
+}
+@media screen and( max-width: 630px) {
+    .searchsmall{
+        width: 200px;
+    }
+    .homeClick{
+        display: none;
+    }
+}
+
+
 @media screen and( max-width: 330px) {
     .searchsmall{
         width: 200px;
+    }
+}
+@media screen and( max-width: 1400px) {
+    .NvBar{
+        height: 4rem;
+    }
+    .searchBtn{
+        margin-bottom: 0;
     }
 }

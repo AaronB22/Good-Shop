@@ -32,7 +32,7 @@ const Home = () => {
     if(loaded){
         return (
             <div>
-                <Carousel className="car-block">
+                <Carousel className="car-block" >
                     <Carousel.Item>
                     <img
                         src={require('../../assests/laptop.jpg')}
