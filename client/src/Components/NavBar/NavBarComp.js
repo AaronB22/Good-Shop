@@ -6,7 +6,7 @@ import { LogInAuthContext } from "../../utils/LogInAuth";
 import 'bootstrap/dist/css/bootstrap.css'
 import { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCartShopping, faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import {faCartShopping, faBars, faMagnifyingGlass, faX } from '@fortawesome/free-solid-svg-icons'
 import CollaspeNav from "../CollaspeNav/CollaspeNav";
 import { CollaspeNavContext } from "../../utils/CollaspeNavContext";
 
@@ -18,6 +18,7 @@ const NavBarComp = () => {
     const {logInStatus, setLogInStatus}= useContext(LogInAuthContext)
     const [windowWidth, setWindowWidth]= useState(1800)
     const [navName,setNavName]=useState('Log In')
+    const [blackOut, setBlackOut]= useState('blackoutClosed')
     const [show, setShow] = useState(false);
     useEffect(()=>{
         if(userInfo){
@@ -39,7 +40,13 @@ const NavBarComp = () => {
         setSearchQuery(e.target.value)
         
     }
-
+    if(blackOut==='blackout'){
+        const testfun=(e)=>{
+            e.preventDefault()
+        }
+        const test= window.addEventListener('wheel', testfun);
+        console.log(test)
+    }
     if(windowWidth>1400){
         return ( 
             <>
@@ -47,9 +54,9 @@ const NavBarComp = () => {
                <Navbar.Brand className='header' onClick={(x)=>{
                    window.location.assign('/')
                }}>React ECOM</Navbar.Brand> 
-                <Navbar.Brand>
+                {/* <Navbar.Brand>
                 <Link to="/categories" className='text-black linkText customFont'>Categories</Link>
-                </Navbar.Brand> 
+                </Navbar.Brand>  */}
                 <div className="navCont">
                     <Form className='searchform'>
                         <Row>
@@ -77,9 +84,8 @@ const NavBarComp = () => {
                     </Form>
                 </div>
                     <Navbar.Brand
-                        style={{
-                            cursor:"pointer"
-                        }}
+                        className="accountInfo"
+                        
                     >
                         {(()=>{
                             if(!logInStatus){
@@ -140,7 +146,65 @@ const NavBarComp = () => {
                             onClick={()=>window.location.assign('/mycart')}
                         />
                     </Navbar.Brand> 
+                    <div 
+                        className="navBottomDiv"
+                    >
+                         <Row className="navBottomRow" style={{
+                             marginLeft:'auto',
+                             marginRight:'auto'
+                         }}>
+                             <Col>
+                                <Dropdown className="">
+                                        <Dropdown.Toggle className="dropDownBottom" >
+                                         <FontAwesomeIcon icon={faBars}
+                                            className="HamBtn fa-xl"
+                                            onClick={()=>{
+                                                setBlackOut('blackout')
+                                            }}
+                                        /> 
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu className="catDropDown">
+                                            <h2>All Categories</h2>
+                                            <Dropdown.Item className='dropItemCat' onClick={()=>window.location.assign('/productList/Phone')}>Phone</Dropdown.Item>
+                                            <Dropdown.Item className='dropItemCat' onClick={()=>window.location.assign('/productList/Laptop')}>Laptop</Dropdown.Item>
+                                            <Dropdown.Item className='dropItemCat' onClick={()=>window.location.assign('/productList/Tablet')}>Tablet</Dropdown.Item>
+                                            
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+
+                             </Col>
+
+                       
+                            <Col className="bottomBarItem"onClick={()=>window.location.assign('/productList/Phone')}
+                            >
+                                <div className="bottomBarItemText">
+                                    Phone
+
+                                </div>
+                            </Col>
+                            <Col className="bottomBarItem" onClick={()=>window.location.assign('/productList/Laptop')}>
+                                <div className="bottomBarItemText">
+                                    Laptop
+
+                                </div>
+                            </Col>
+                            <Col className="bottomBarItem" onClick={()=>window.location.assign('/productList/Tablet')}>
+                                <div className="bottomBarItemText">
+                                    Tablet
+
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
             </Navbar>
+            <div className={blackOut}
+                onClick={()=>{
+                    if(blackOut==='blackout'){
+                        setBlackOut('closed')
+                    }
+                }}
+            ></div>
             </>
             );
             
