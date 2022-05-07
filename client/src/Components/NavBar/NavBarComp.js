@@ -218,7 +218,7 @@ const NavBarComp = () => {
                             console.log('open')
                         }}
                         />
-                        <h3 onClick={()=>window.location.assign('/home')}>
+                        <h3 onClick={()=>window.location.assign('/home')} className='homeClick'>
                             React ECOM
                         </h3>
                     <Form className="searchformsmall">

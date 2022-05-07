@@ -28,12 +28,12 @@
     
 }
 .blockTitle{
-    color: white;
+    color: black;
     text-align: center;
     font-size: 2rem;
 }
 .CollaspeBar{
-    background: $primary-color;
+    background: #943d24;
     height: 3.5rem;
 }
 .closeBtn{
@@ -44,4 +44,19 @@
     margin-left: 25rem;
     z-index: 10;
     width: 5rem;
+}
+
+.catGroup{
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+.catHeader{
+   
+}
+
+@media screen and( max-width: 530px) {
+    .collaspeBlock{
+        width: 200px;
+    }
+    
 }

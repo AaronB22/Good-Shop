@@ -12,7 +12,6 @@ const CollaspeNav = () => {
     const [collClass, setCollClass]= useState('collsapeNavClosed') 
     const handleCollaspes=()=>{
         if(collClass==='collsapeNavOpen'){
-            console.log('open')
             setCollClass('collsapeNavClosed')
         }
         else{
@@ -38,21 +37,37 @@ const CollaspeNav = () => {
 
                         </div>
                     </div>
-                    <h4 onClick={()=>window.location.assign('/categories')}>
-                        Categories
-                    </h4>
+                    <h4 onClick={()=>window.location.assign('/')}>
+                            Home
+                        </h4>
+                   
                     <h4 onClick={()=>window.location.assign('/mycart')}>
                         Cart
                     </h4>
-    
+                    <div className='catGroup'>
+                        <h2 className='catHeader'>
+                            Categories
+                        </h2>
+                        <h4 onClick={()=>window.location.assign('/productList/Phone')}>
+                            Phone
+                        </h4>
+                        <h4 onClick={()=>window.location.assign('/productList/Tablet')}>
+                            Tablet
+                        </h4>
+                        <h4 onClick={()=>window.location.assign('/productList/Laptop')}>
+                            Laptop
+                        </h4>
+
+                    </div>
                 </div>
                 <FontAwesomeIcon icon={faX}
                             className="closeBtn fa-2xl"
                             onClick={()=>{setCollaspeState("closed")
-                            console.log('closed')
                         }}
                         />
-                <div className='backdropCollaspe'>
+                <div className='backdropCollaspe' onClick={()=>{
+                        setCollaspeState("closed")
+                }}>
                 </div>
             </div>
             
