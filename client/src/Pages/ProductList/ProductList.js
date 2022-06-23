@@ -25,11 +25,7 @@ const ProductList = () => {
                     setHasData(true)
                 }
                 if(data.length===0){
-                    // alert("No results :(")
                     setProducts(data)
-                    // return(<>
-                    //     <h1>No Results</h1>
-                    // </>)
                 }
                 setLoaded(true)
             })

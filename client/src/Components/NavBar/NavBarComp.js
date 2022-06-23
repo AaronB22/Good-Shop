@@ -52,10 +52,8 @@ const NavBarComp = () => {
             <Navbar expand='lg' className="NvBar">
                <Navbar.Brand className='header' onClick={(x)=>{
                    window.location.assign('/')
-               }}>React ECOM</Navbar.Brand> 
-                {/* <Navbar.Brand>
-                <Link to="/categories" className='text-black linkText customFont'>Categories</Link>
-                </Navbar.Brand>  */}
+               }}>Good Shop</Navbar.Brand> 
+                
                 <div className="navCont">
                     <Form className='searchform'>
                         <Row>
