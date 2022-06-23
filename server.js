@@ -18,9 +18,8 @@ app.use(methodOverRide('_method'))
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
-
-
 app.use(express.static(root));
+
 const mongoURI=process.env.MONGODB_URI || 'mongodb://localhost/ecom';
 mongoose.connect(mongoURI,  {
   useNewUrlParser: true,
