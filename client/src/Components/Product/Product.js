@@ -62,6 +62,9 @@ const Product = (props) => {
             <Card className="prodcard"
                 key={props.product._id}
             >
+                <Card.Text className='prodHeader' onClick={handleWindowChange}>
+                    {props.product.name}
+                </Card.Text>
                 <Container className= "contImg">
                  <img
                             className="prodImg"
@@ -72,9 +75,6 @@ const Product = (props) => {
                 <Card.Text className="priceCard" onClick={handleWindowChange}>
                             ${props.product.price}
                         </Card.Text>
-                <Card.Text className='prodHeader' onClick={handleWindowChange}>
-                    {props.product.name}
-                </Card.Text>
                     <Container className="ratingCont" onClick={handleWindowChange}>
                     <img
                             className="prodRate"
