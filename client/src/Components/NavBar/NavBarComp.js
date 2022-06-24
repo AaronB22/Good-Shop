@@ -39,17 +39,21 @@ const NavBarComp = () => {
         setSearchQuery(e.target.value)
         
     }
-    if(blackOut==='blackout'){
-        const testfun=(e)=>{
-            e.preventDefault()
-        }
-        const test= window.addEventListener('wheel', testfun);
-        console.log(test)
-    }
+    // if(blackOut==='blackout'){
+    //     const testfun=(e)=>{
+    //         e.preventDefault()
+    //     }
+    //     const test= window.addEventListener('wheel', testfun);
+    //     console.log(test)
+    // }
     if(windowWidth>1400){
         return ( 
             <>
-            <Navbar expand='lg' className="NvBar">
+            <Navbar expand='lg' className="NvBar" onClick={()=>{
+                 if(blackOut==='blackout'){
+                    setBlackOut('closed')
+                }
+            }}>
                <Navbar.Brand className='header' onClick={(x)=>{
                    window.location.assign('/')
                }}>Good Shop</Navbar.Brand> 
