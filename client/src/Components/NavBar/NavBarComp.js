@@ -39,13 +39,6 @@ const NavBarComp = () => {
         setSearchQuery(e.target.value)
         
     }
-    // if(blackOut==='blackout'){
-    //     const testfun=(e)=>{
-    //         e.preventDefault()
-    //     }
-    //     const test= window.addEventListener('wheel', testfun);
-    //     console.log(test)
-    // }
     if(windowWidth>1400){
         return ( 
             <>

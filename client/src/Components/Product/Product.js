@@ -4,7 +4,9 @@ import {
     Card,
     Container,
     Button,
-    Spinner
+    Spinner,
+    Row,
+    Col
     } from "react-bootstrap";
 import './Product.scss'
 import { LogInAuthContext } from "../../utils/LogInAuth";
@@ -75,27 +77,32 @@ const Product = (props) => {
                 <Card.Text className="priceCard" onClick={handleWindowChange}>
                             ${props.product.price}
                         </Card.Text>
-                    <Container className="ratingCont" onClick={handleWindowChange}>
+                    {/* <Container className="ratingCont" onClick={handleWindowChange}>
                     <img
                             className="prodRate"
                             src={require('../../assests/star.png')}
                             alt="Star Rating. 5 stars"
                         />
-                    </Container>
+                    </Container> */}
                     <Container className="TagCont" onClick={handleWindowChange}>
-                        
-                    {tags.map((x, index)=>{
+                       <Row>
+                            {tags.map((x, index)=>{
 
-                        tagKey += JSON.stringify(index)
+                                tagKey += JSON.stringify(index)
 
-                        return(
-                            <Tags
-                                tag={x}
-                                id={tagKey}
-                                key={tagKey}
-                            />
-                        )
-                    })}
+                                return(
+                                    <Col>
+                                        <Tags
+                                            tag={x}
+                                            id={tagKey}
+                                            key={tagKey}
+                                        />
+                                    
+                                    </Col>
+                                )
+                            })}
+
+                       </Row>
                     </Container>
         
                 <Button className="cartBtn" onClick={handleAddToCart}>

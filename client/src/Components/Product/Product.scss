@@ -2,11 +2,10 @@
     width: 20rem;
     height: 28rem;
     margin-top: 3rem;
-    border: 5px solid cadetblue !important;
+    border: 5px solid #FFAC4A !important;
     cursor: pointer;
-    background-color: whitesmoke;
-    border-radius: 10% !important;
 }
+
 
 .cartBtn{
   margin-left: auto;
@@ -16,6 +15,8 @@
 
 .contImg{
   width: 100%;
+  aspect-ratio: 16/9;
+
   
 }
 
