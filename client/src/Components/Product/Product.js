@@ -82,13 +82,13 @@ const Product = (props) => {
                         <Card.Text className="priceCard" onClick={handleWindowChange}>
                                     ${props.product.price}
                                 </Card.Text>
-                            {/* <Container className="ratingCont" onClick={handleWindowChange}>
+                            <Container className="ratingCont" onClick={handleWindowChange}>
                             <img
                                     className="prodRate"
                                     src={require('../../assests/star.png')}
                                     alt="Star Rating. 5 stars"
                                 />
-                            </Container> */}
+                            </Container>
                             <Container className="TagCont" onClick={handleWindowChange}>
                             <Row>
                                     {tags.map((x, index)=>{
