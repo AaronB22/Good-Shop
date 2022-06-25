@@ -65,22 +65,18 @@ const ProductList = () => {
         <Card.Text className="ListHeader">
             {cap}
         </Card.Text>
-        <Row>
             {products.map(x=>{
                 if(x.price<priceNumber){
                     return(
-                        <Col
-                            key={x._id}
-                        >
                             <Product
+                                key={x._id}
                                 product={x}
                             />
-                        </Col>
+                        
                     )
 
                 }
                  })}
-        </Row>
         </> );
     }
     if (!loaded){

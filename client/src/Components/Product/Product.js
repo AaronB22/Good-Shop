@@ -64,50 +64,59 @@ const Product = (props) => {
             <Card className="prodcard"
                 key={props.product._id}
             >
-                <Card.Text className='prodHeader' onClick={handleWindowChange}>
-                    {props.product.name}
-                </Card.Text>
-                <Container className= "contImg">
-                 <img
-                            className="prodImg"
-                            src={img}
-                            alt='Product Image'
-                            />
-                </Container>
-                <Card.Text className="priceCard" onClick={handleWindowChange}>
-                            ${props.product.price}
-                        </Card.Text>
-                    {/* <Container className="ratingCont" onClick={handleWindowChange}>
-                    <img
-                            className="prodRate"
-                            src={require('../../assests/star.png')}
-                            alt="Star Rating. 5 stars"
-                        />
-                    </Container> */}
-                    <Container className="TagCont" onClick={handleWindowChange}>
-                       <Row>
-                            {tags.map((x, index)=>{
+                <Row>
+                    <Card.Text className='prodHeader' onClick={handleWindowChange}>
+                        {props.product.name}
+                    </Card.Text>
+                    <div className='imgCol'>
+                        <Container className= "contImg">
+                        <img
+                                    className="prodImg"
+                                    src={img}
+                                    alt='Product Image'
+                                    />
+                        </Container>
+                    
+                    </div>
+                    <Col className='productBlock'>
+                        <Card.Text className="priceCard" onClick={handleWindowChange}>
+                                    ${props.product.price}
+                                </Card.Text>
+                            {/* <Container className="ratingCont" onClick={handleWindowChange}>
+                            <img
+                                    className="prodRate"
+                                    src={require('../../assests/star.png')}
+                                    alt="Star Rating. 5 stars"
+                                />
+                            </Container> */}
+                            <Container className="TagCont" onClick={handleWindowChange}>
+                            <Row>
+                                    {tags.map((x, index)=>{
 
-                                tagKey += JSON.stringify(index)
+                                        tagKey += JSON.stringify(index)
 
-                                return(
-                                    <Col>
-                                        <Tags
-                                            tag={x}
-                                            id={tagKey}
-                                            key={tagKey}
-                                        />
-                                    
-                                    </Col>
-                                )
-                            })}
+                                        return(
+                                            <Col>
+                                                <Tags
+                                                    tag={x}
+                                                    id={tagKey}
+                                                    key={tagKey}
+                                                />
+                                            
+                                            </Col>
+                                        )
+                                    })}
 
-                       </Row>
-                    </Container>
-        
-                <Button className="cartBtn" onClick={handleAddToCart}>
-                    Add to Cart
-                </Button>
+                            </Row>
+                            </Container>
+                
+                    
+                    </Col>
+                        <button className="cartBtn" onClick={handleAddToCart}>
+                            Add to Cart
+                        </button>
+
+                </Row>
             </Card>
           );
 
