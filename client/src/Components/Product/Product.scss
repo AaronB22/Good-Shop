@@ -32,12 +32,18 @@
   margin: 0;
   padding: 0;
   position: absolute;
-  height: 19rem;
+  height: 80%;
   top:0;
+  margin-right: 5px;
+  background-color: #FF7000; 
+}
+.productBlock{
+  margin-left: 20%;
 }
 
 .imgCol{
-  width: 30% !important;
+  width: 20% !important;
+  
 }
 
 .prodHeader{
@@ -53,7 +59,7 @@
 }
 
 .prodRate{
-  width:12%;
+  width:100px;
 }
 
 .priceCard{
@@ -73,18 +79,122 @@
   flex-direction: row;
 }
 
+.smallCard{
+  display: none;
+}
 
-@media screen  and (max-width: 500px){
+@media screen  and (max-width: 1250px){
+  .productBlock{
+   
+  }
+  
+  .prodImg{
+    margin-top: 80px;
+    height: 15rem;
+  }
   .prodcard{
-    width: 80%;
     height: 25rem;
   }
   .prodImg{
-    width: 80%;
+   height: 15rem;
     margin-left: auto;
     margin-right: auto;
-
-  }
   
+  }
 
 }
+
+@media screen  and (max-width: 1100px){
+  .productBlock{
+    margin-top: 40px !important;
+    margin-left: 250px;
+  }
+
+}
+
+
+@media screen  and (max-width: 900px){
+  .imgCol{
+    width: 300px;
+   
+  }
+}
+@media screen  and (max-width: 800px){
+  .imgCol{
+    width: 250px;
+   
+  }
+  .prodImg{
+    height: 200px;
+  }
+}
+@media screen  and (max-width: 650px){
+  
+  .prodImg{
+    height: 150px;
+  }
+}
+@media screen  and (max-width: 600px){
+  .largeCard{
+    display: none;
+  }
+  .smallCard{
+    display: block;
+  }
+  .prodImgSmall{
+    width: 350px;
+    height: 300px;
+  }
+  .imgColSmall{
+    height: 350px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+   
+  }
+  .priceCard{
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 1rem ;
+  }
+  .prodcard{
+    height: 38rem;
+  }
+  .smallBtnDiv{
+    width: 400px;
+    height: 5rem;
+    margin-left: auto;
+    margin-right: auto
+  }
+  .cartBtnSmall{
+    width: inherit;
+    font-family: 'Courgette', cursive;
+    font-size: 24px;
+    background-color: #FFAC4A ;
+    color: black ;
+    border-color: #FFAC4A;
+    border: none;
+    border-radius: 30px
+  }
+}
+
+@media screen  and (max-width: 410px){
+  
+  .prodImgSmall{
+    width: 300px;
+    height: initial;
+  }
+  .smallBtnDiv{
+    width: 100%;
+  }
+}
+
+@media screen  and (max-width: 330px){
+  
+  .prodImgSmall{
+    width: 200px;
+    margin-left: 50px;
+  }
+  
+}
+
