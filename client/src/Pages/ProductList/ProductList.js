@@ -11,6 +11,7 @@ const ProductList = () => {
     const [hasData, setHasData]= useState(false)
     const [products, setProducts]= useState();
     const [loaded,setLoaded]= useState(false)
+    const [filter, setFilter]= useState('collapseFilterBar')
     const [priceNumber, setPriceNumber]= useState(1600)
     const handlePriceFilter=(x)=>{
         setPriceNumber(x.target.value)
@@ -40,27 +41,37 @@ const ProductList = () => {
 
         }
     },[category.category])
+
+    const handleFilterClick=()=>{
+        if(filter==='FilterBar'){
+            setFilter('collapseFilterBar')
+        }
+        else{
+            setFilter('FilterBar')
+        }
+    }
+
     if(loaded && hasData){
         return ( 
         <>
         
-        <Card className='FilterBar'>
-            <Card.Text className='FilterTitle'>
+        <Card className={filter} >
+            <Form.Label
+                className="filterPrice"
+            >Max Price: <span className="priceNumber">${priceNumber}</span></Form.Label>
+            <Form.Range
+                onChange={handlePriceFilter}
+                min='200'
+                max='3000'
+                style={{
+                    width:'60%',
+                    marginRight:'auto',
+                    marginLeft:'auto'
+                }}
+            />
+            <Card.Text className='FilterTitle' onClick={handleFilterClick}>
                 Filters
             </Card.Text>
-                <Form.Label
-                    className="filterPrice"
-                >Max Price: <span className="priceNumber">${priceNumber}</span></Form.Label>
-                <Form.Range
-                    onChange={handlePriceFilter}
-                    min='200'
-                    max='3000'
-                    style={{
-                        width:'60%',
-                        marginRight:'auto',
-                        marginLeft:'auto'
-                    }}
-                />
         </Card>
         <Card.Text className="ListHeader">
             {cap}
