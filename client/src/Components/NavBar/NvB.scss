@@ -164,3 +164,9 @@
         margin-bottom: 0;
     }
 }
+
+@media screen and( max-width: 300px) {
+    .searchsmall{
+        width: 100px;
+    }
+}

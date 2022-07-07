@@ -213,7 +213,7 @@ const NavBarComp = () => {
                         }}
                         />
                         <h3 onClick={()=>window.location.assign('/home')} className='homeClick'>
-                            React ECOM
+                            Good Shop
                         </h3>
                     <Form className="searchformsmall">
                         <Row>
