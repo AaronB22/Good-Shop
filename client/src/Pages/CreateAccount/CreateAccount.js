@@ -44,14 +44,13 @@ const CreateAccount = () => {
            setPasswordAlert('Passwords Must Match')
        }
        
-       console.log(validEmail)
        if(password.length>=7 && password===conPassword &&validEmail){
            const newUser={
                "name":name,
                "email":email,
                "password":password
            }
-           const res= await fetch('/api/newUser',{
+           const res= await fetch('https://aaronb22ecomsite.herokuapp.com/api/newUser',{
             method: "POST",
             body: JSON.stringify(newUser),
             headers: {
