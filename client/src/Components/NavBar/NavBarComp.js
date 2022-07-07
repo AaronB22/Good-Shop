@@ -39,29 +39,25 @@ const NavBarComp = () => {
         setSearchQuery(e.target.value)
         
     }
-    if(blackOut==='blackout'){
-        const testfun=(e)=>{
-            e.preventDefault()
-        }
-        const test= window.addEventListener('wheel', testfun);
-        console.log(test)
-    }
     if(windowWidth>1400){
         return ( 
             <>
-            <Navbar expand='lg' className="NvBar">
+            <Navbar expand='lg' className="NvBar" onClick={()=>{
+                 if(blackOut==='blackout'){
+                    setBlackOut('closed')
+                }
+            }}>
                <Navbar.Brand className='header' onClick={(x)=>{
                    window.location.assign('/')
-               }}>React ECOM</Navbar.Brand> 
-                {/* <Navbar.Brand>
-                <Link to="/categories" className='text-black linkText customFont'>Categories</Link>
-                </Navbar.Brand>  */}
+               }}>Good Shop</Navbar.Brand> 
+                
                 <div className="navCont">
                     <Form className='searchform'>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-3 search" >
                                     <Form.Control placeholder="search..." onChange={handleSearch}
+                                    className='searchBox'
                                     onKeyDown={e=>{
                                         if(e.key==='Enter'){
                                             e.preventDefault()
@@ -74,7 +70,7 @@ const NavBarComp = () => {
                             </Col>
                             <Col>
                                 <FontAwesomeIcon icon={faMagnifyingGlass}
-                                    className="searchBtn"
+                                    className="searchBtn fa-xl "
                                     onClick={()=>window.location.assign('/productListSearch/search/'+searchQuery)}
                                 />
 
@@ -156,7 +152,7 @@ const NavBarComp = () => {
                                 <Dropdown className="">
                                         <Dropdown.Toggle className="dropDownBottom" >
                                          <FontAwesomeIcon icon={faBars}
-                                            className="HamBtn fa-xl"
+                                            className="HamBtn fa-2xl"
                                             onClick={()=>{
                                                 setBlackOut('blackout')
                                             }}
@@ -218,7 +214,7 @@ const NavBarComp = () => {
                         }}
                         />
                         <h3 onClick={()=>window.location.assign('/home')} className='homeClick'>
-                            React ECOM
+                            Good Shop
                         </h3>
                     <Form className="searchformsmall">
                         <Row>

@@ -47,6 +47,7 @@ function App() {
             )
           }
           })()}
+          <div className='whiteBG'></div>
           <div className='App'>
             <Routers/>
 

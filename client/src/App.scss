@@ -1,20 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
 .App{
-    // border: gray 1px solid;
     width: 80%;
     height: inherit;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
+    z-index: 2;
+    
 }
 .center{
     margin-left: auto;
     margin-right: auto;
 }
-body{
-    // background-color:#5D001E;
-    background-color:whitesmoke;
+
+.whiteBG{
+    width: 80%;
+    height: 820px;
+    background-color: white;
+    position: fixed;
+    left: 10%;
+    z-index: -1;
 }
-//#5D001E
+
+body{
+    background-color:#F9C87C;
+    // background-color:whitesmoke;
+//     background: repeating-linear-gradient(
+//   45deg,
+//   #FF7000,
+//   white 10px,
+//   #FFE9C9 10px,
+//   white 20px
+// );
+}
 @media screen and( max-width: 600px) {
     .App{
         margin: 0;

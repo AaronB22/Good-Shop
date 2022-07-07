@@ -31,59 +31,62 @@ const Home = () => {
 
     if(loaded){
         return (
-            <div>
-                <Carousel className="car-block" >
-                    <Carousel.Item>
-                    <img
-                        src={require('../../assests/laptop.jpg')}
-                        className='imgHome'
-                        onClick={handleWindowChange}
-                        id='Laptop'
-                        alt="Laptop Category"
-                        />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                    <img
-                        src={require('../../assests/tablet.jpg')}
-                        className='imgHome'
-                        onClick={handleWindowChange}
-                        id='Tablet'
-                        alt="Tablet Category"
-                        />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img
-                        src={require('../../assests/phone.jpg')}
-                        className='imgHome'
-                        onClick={handleWindowChange}
-                        id='Phone'
-                        alt="Phone Category"
-                        />
-                    </Carousel.Item>
-                </Carousel>
-                <Row>
-                    <Card.Text className='featured'>
-                        Featured Products:
-                    </Card.Text>
-                    {products.map(x=>{
-                        productCount+=1;
-                        if(productCount<=10){
-                            return(
-                                <Col className="FeatureProd"
-                                    key={x._id}
-                                >
-                                    <Product
-                                        product={x}
-                                    />
-                                </Col>
-                            )
+            <>
+                <div className="homeTopBar">
+                    <div className="homeImgDiv">
+                        <img src={require('../../assests/laptopcut.jpg')} className='imgHome'/>
+                        <div className="homeImgBlackOut"></div>
+                    </div>
+                    <div className="homeTitleDiv">
+                        <h1 className="homeTitle">Welcome!</h1>
+                    </div>
+                    <div className="homePar">
+                        Welcome to Good Shop! This is a custom project by Aaron Bailey. NOTE: This is just an example shop. NOT A REAL SHOP
+                    </div>
+                </div>
+                <div className="homeRow">
+                    <Row className="rowHomepage">
+                        <Col className="ColHomepage">
+                            <Card onClick={()=>{
+                                window.location.assign('./productList/Phone')
+                            }}
+                            className="homeCatCard"
+                            >
+                                <h2 className="homeCardTitle">Phone</h2>
+                                <div className="catImgDivHome">
+                                    <img src={require('../../assests/phone.jpg')} className='catImgHome'/>
+                                </div>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card onClick={()=>{
+                                window.location.assign('./productList/Tablet')
+                            }}
+                            className="homeCatCard"
+                            >
+                                <h2 className="homeCardTitle">Tablet</h2>
+                                <div className="catImgDivHome">
+                                    <img src={require('../../assests/tablet.jpg')} className='catImgHome'/>
+                                </div>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card onClick={()=>{
+                                window.location.assign('./productList/Laptop')
+                            }}
+                            className="homeCatCard"
+                            >
+                                <h2 className="homeCardTitle">Laptop</h2>
+                                <div className="catImgDivHome">
+                                    <img src={require('../../assests/laptop.jpg')} className='catImgHome'/>
+                                </div>
+                            </Card>
+                        </Col>
+                    </Row>
 
-                        }
-                    })}
-    
+                </div>
 
-                </Row>
-            </div>
+            </>
           );
     }
         if(!loaded){

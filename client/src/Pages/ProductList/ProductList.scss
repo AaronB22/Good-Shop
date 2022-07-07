@@ -1,10 +1,17 @@
+@import '../../scss/mainThemes.scss';
+
+
 .ListHeader{
     font-size: 5rem;
     text-align: center;
     font-weight: 500;
+    font-family: 'Courgette', cursive;
 }
 .FilterBar{
+    background-color: whitesmoke !important;
     position: absolute;
+    height: 150px;
+    margin-bottom: 20px;
 }
 
 .rangeFilter{
@@ -12,10 +19,30 @@
 }
 
 .FilterTitle{
+    background-color: $sec-color;
     font-size: 2rem;
     text-align: center;
+    position: relative;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    top: 70px;
+    width: 20%;
+    height: 2.5rem;
+    border-right: 2px solid $primary-color;
+    border-left: 2px solid $primary-color;
+    border-bottom: 2px solid $primary-color;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
 }
-
+.collapseFilterBar{
+    background-color: whitesmoke !important;
+    position: absolute;
+    height: 150px;
+    // margin-bottom: 20px;
+    bottom: 125px;
+}
 .filterPrice{
     margin-left: auto;
     margin-right: auto;
@@ -32,4 +59,10 @@
 }
 .notFoundSearch{
     font-weight: 700;
+}
+
+.productCards{
+    width: 90%;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
