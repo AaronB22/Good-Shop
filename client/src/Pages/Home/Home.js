@@ -44,44 +44,47 @@ const Home = () => {
                         Welcome to Good Shop! This is a custom project by Aaron Bailey. NOTE: This is just an example shop. NOT A REAL SHOP
                     </div>
                 </div>
-                <Row>
-                    <Col>
-                        <Card onClick={()=>{
-                            window.location.assign('./productList/Phone')
-                        }}
-                        className="homeCatCard"
-                        >
-                            <h2 className="homeCardTitle">Phone</h2>
-                            <div className="catImgDivHome">
-                                <img src={require('../../assests/phone.jpg')} className='catImgHome'/>
-                            </div>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card onClick={()=>{
-                            window.location.assign('./productList/Tablet')
-                        }}
-                        className="homeCatCard"
-                        >
-                            <h2 className="homeCardTitle">Tablet</h2>
-                            <div className="catImgDivHome">
-                                <img src={require('../../assests/tablet.jpg')} className='catImgHome'/>
-                            </div>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card onClick={()=>{
-                            window.location.assign('./productList/Laptop')
-                        }}
-                        className="homeCatCard"
-                        >
-                            <h2 className="homeCardTitle">Laptop</h2>
-                            <div className="catImgDivHome">
-                                <img src={require('../../assests/laptop.jpg')} className='catImgHome'/>
-                            </div>
-                        </Card>
-                    </Col>
-                </Row>
+                <div className="homeRow">
+                    <Row className="rowHomepage">
+                        <Col className="ColHomepage">
+                            <Card onClick={()=>{
+                                window.location.assign('./productList/Phone')
+                            }}
+                            className="homeCatCard"
+                            >
+                                <h2 className="homeCardTitle">Phone</h2>
+                                <div className="catImgDivHome">
+                                    <img src={require('../../assests/phone.jpg')} className='catImgHome'/>
+                                </div>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card onClick={()=>{
+                                window.location.assign('./productList/Tablet')
+                            }}
+                            className="homeCatCard"
+                            >
+                                <h2 className="homeCardTitle">Tablet</h2>
+                                <div className="catImgDivHome">
+                                    <img src={require('../../assests/tablet.jpg')} className='catImgHome'/>
+                                </div>
+                            </Card>
+                        </Col>
+                        <Col>
+                            <Card onClick={()=>{
+                                window.location.assign('./productList/Laptop')
+                            }}
+                            className="homeCatCard"
+                            >
+                                <h2 className="homeCardTitle">Laptop</h2>
+                                <div className="catImgDivHome">
+                                    <img src={require('../../assests/laptop.jpg')} className='catImgHome'/>
+                                </div>
+                            </Card>
+                        </Col>
+                    </Row>
+
+                </div>
 
             </>
           );

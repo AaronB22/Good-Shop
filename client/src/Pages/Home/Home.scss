@@ -37,16 +37,19 @@
 }
 
 .homePar{
-    position: absolute;
+    position: relative;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    top: -400px;
     width: 40%;
-    right: 30%;
+    // right: 30%;
     color: $primary-color;
     font-size: 2rem;
     background-color: #EEF2FF;
     border: $primary-color solid 2px;
     border-radius: 10px;
-    bottom: 200px;
+   
 }
 .homeCatCard{
     width: 500px;
@@ -64,4 +67,104 @@
     color: $primary-color;
     font-size: 4rem;
 }
+.ColHomepage{
+    width: inherit;
+}
 
+
+@media screen and(max-width:1450px) {
+    .homePar{
+        bottom: 300px;
+    }
+    .homeTopBar{
+        margin-bottom: 250px;
+    }
+}
+@media screen and(max-width:1320px) {
+    .homeTitleDiv{
+        top:80px
+    }
+    .homePar{
+        bottom: 500px;
+    }
+    .homeTopBar{
+        margin-bottom: 150px;
+    }
+    .homeRow{
+        width: 600px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+@media screen and(max-width:1000px) {
+    .homeTitleDiv{
+        top:180px;
+        right:50%
+    }
+    .homePar{
+        display: none;
+    }
+    .homeTopBar{
+        margin-bottom: 0px;
+    }
+}
+
+@media screen and(max-width:700px) {
+    .homeTitleDiv{
+        top:180px;
+        right:50%
+    }
+    .homePar{
+        display: none;
+    }
+    .homeTopBar{
+        margin-bottom: 0px;
+    }
+    .homeRow{
+        width: 100%;
+    }
+    .rowHomepage{
+        width: 100%;
+    }
+    
+}
+
+@media screen and(max-width:600px) {
+   .homeCatCard{
+    width: 300px;
+   
+   }
+   .catImgHome{
+    width: 100%;
+
+   }
+   .homeImgDiv{
+    height: 320px;
+}
+}
+
+@media screen and(max-width:400px) {
+    .homeCatCard{
+        width: 250px;
+       
+       }
+    .homeTitleDiv{
+        right:80%;
+        top:100px;
+    }
+    .homeCardTitle{
+        font-size: 2rem;
+    }
+    .homeTitle{
+        font-size: 3rem;
+    }
+    .homeTopBar{
+        margin-bottom: 0px;
+    }
+    .homeRow{
+        bottom: 200px;
+    }
+ }
