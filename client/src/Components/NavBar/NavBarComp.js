@@ -57,6 +57,7 @@ const NavBarComp = () => {
                             <Col>
                                 <Form.Group className="mb-3 search" >
                                     <Form.Control placeholder="search..." onChange={handleSearch}
+                                    className='searchBox'
                                     onKeyDown={e=>{
                                         if(e.key==='Enter'){
                                             e.preventDefault()
@@ -69,7 +70,7 @@ const NavBarComp = () => {
                             </Col>
                             <Col>
                                 <FontAwesomeIcon icon={faMagnifyingGlass}
-                                    className="searchBtn"
+                                    className="searchBtn fa-xl "
                                     onClick={()=>window.location.assign('/productListSearch/search/'+searchQuery)}
                                 />
 
@@ -151,7 +152,7 @@ const NavBarComp = () => {
                                 <Dropdown className="">
                                         <Dropdown.Toggle className="dropDownBottom" >
                                          <FontAwesomeIcon icon={faBars}
-                                            className="HamBtn fa-xl"
+                                            className="HamBtn fa-2xl"
                                             onClick={()=>{
                                                 setBlackOut('blackout')
                                             }}

@@ -141,6 +141,73 @@
     opacity: 50%;
     z-index: 5;
 }
+@media screen and (min-width:2500px) {
+    .NvBar{
+        height: 15rem;
+    }
+    .header{
+        font-size: 6rem !important;
+    }
+    .searchform{
+        height: 6rem;
+        margin-bottom: 10px;
+    }
+    .searchBox{
+        height: 5rem;
+        font-size: 3rem !important;
+    }
+    .navBottomDiv{
+        height: 4.5rem;
+    }
+    .bottomBarItemText{
+        font-size: 3rem;
+    }
+    .dropDownBottom{
+        width: 100px;
+        height: 70px;
+    }
+    .customFont{
+        font-size: 3rem;
+    }
+    .dropBtn{
+        font-size: 3rem !important;
+    }
+}
+
+@media screen and (min-width: 2000px) and (max-width: 2500px) {
+    .NvBar{
+        height: 12rem;
+    }
+    .header{
+        font-size: 6rem !important;
+    }
+    .searchform{
+        height: 6rem;
+        margin-bottom: 10px;
+    }
+    .searchBox{
+        height: 5rem;
+        font-size: 3rem !important;
+    }
+    .navBottomDiv{
+        height: 4.5rem;
+    }
+    .bottomBarItemText{
+        font-size: 3rem;
+    }
+    .dropDownBottom{
+        width: 100px;
+        height: 70px;
+    }
+    .customFont{
+        font-size: 3rem;
+    }
+    .dropBtn{
+        font-size: 3rem !important;
+    }
+}
+
+
 @media screen and( max-width: 630px) {
     .searchsmall{
         width: 200px;
