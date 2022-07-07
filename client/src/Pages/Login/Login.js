@@ -19,9 +19,11 @@ const Login = () => {
    },[])
     const handleFailure= (result) =>{
         console.log('FAIL TO GET DATA')
+        console.log(result)
         alert(result)
     }
     const handleGoogleLogin=async(data)=>{
+        console.log('test')
         const reqUser={
             "email":data.profileObj.email,
             "name":data.profileObj.name,
@@ -104,7 +106,7 @@ const Login = () => {
                 Continue
             </Button>
             </Form>
-                <h4>Or sign In using</h4>
+                {/* <h4>Or sign In using</h4>
                 <Card
                     className='loginBtnGoogle'
                 >
@@ -118,7 +120,7 @@ const Login = () => {
                     }}
                     />
     
-                </Card>
+                </Card> */}
                 <Container className='createAccCont'>
                     <h2>
                         Don't have an account?

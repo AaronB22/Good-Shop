@@ -152,7 +152,7 @@ const CreateAccount = () => {
                 <Card
                     className='loginBtnGoogle'
                 >
-                    <GoogleLogin
+                    {/* <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                     onSuccess={handleGoogleLogin}
                     onFailure={handleFailure}
@@ -160,7 +160,7 @@ const CreateAccount = () => {
                         marginLeft:"auto",
                         marginRight:"auto"
                     }}
-                    />
+                    /> */}
                     
                 </Card>
                 <h4>Have an Account?</h4>
