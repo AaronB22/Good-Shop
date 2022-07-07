@@ -70,7 +70,68 @@
 .ColHomepage{
     width: inherit;
 }
+.homeRow{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
 
+
+@media screen and(min-width:3200px) {
+    .homeImgBlackOut{
+        height: 1500px;
+        bottom:1500px;
+    }
+    .homeImgDiv{
+        height: 1200px;
+    }
+    .homeTitle{
+        font-size: 10rem;
+    }
+    .homePar{
+        font-size: 5rem;
+        top: -600px;
+    }
+}
+@media screen and(min-width:2450px) and (max-width:3200px) {
+    .homeImgDiv{
+        height: 900px;
+    }
+    .homeTitle{
+        font-size: 8rem;
+    }
+    .homePar{
+        font-size: 4rem;
+        top: -400px;
+    }
+    
+}
+
+@media screen and(min-width:2000px) and (max-width:3200px) {
+    .homeImgBlackOut{
+        height: 1300px;
+        bottom:1300px;
+    }
+    .homeTitle{
+        font-size: 6rem;
+    }
+    .homePar{
+        font-size: 3rem;
+        top: -200px;
+    }
+}
+
+@media screen and(min-width:1850px) {
+    .homeCatCard{
+        width: 800px;
+    }
+    .homeRow{
+        width: 800px;
+    }
+    .catImgHome{
+        width: 800px;
+    }
+}
 
 @media screen and(max-width:1450px) {
     .homePar{
