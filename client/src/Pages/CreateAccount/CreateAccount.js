@@ -50,7 +50,7 @@ const CreateAccount = () => {
                "email":email,
                "password":password
            }
-           const res= await fetch('https://aaronb22ecomsite.herokuapp.com/api/newUser',{
+           const res= await fetch('/api/newUser',{
             method: "POST",
             body: JSON.stringify(newUser),
             headers: {
