@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Form, Button, Dropdown} from "react-bootstrap";
+import { UserContext } from '../../utils/UserContext';
+
 
 const UploadProduct = () => {
     const [img, setImg]= useState()
+    const {userInfo}= useContext(UserContext)
     const [name, setName]= useState()
+    const [userType, setUserType]= useState('none')
     const [category, setCategory]= useState('Choose Category...');
     const [description, setDescription]= useState()
     const [price, setPrice]= useState()
@@ -49,91 +53,115 @@ const UploadProduct = () => {
     const uploadImg=async (e)=>{
         setImg(e.target.files[0])
     }
+    useEffect(()=>{
+       if(userInfo){
+            const getUserInfo= async()=>{
+                const res= await fetch('/api/getUser/'+userInfo.id);
+                const data= await res.json()
+                if(data[0].userType==='normal'){
+                    window.location.assign('/')
+                }
+                if(data[0].userType==='admin'){
+                    setUserType('admin')
+                }
+            }
+            getUserInfo()
+       }
     
-    return ( 
-        <>
-            <Form>
-            <Form.Group className="mb-3" onChange={(x)=>{
-                        setName(x.target.value)
-                    }}>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control/>
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
+    },[userInfo])
+    if(userType==='admin'){
+        return ( 
+            <>
+                <Form>
                 <Form.Group className="mb-3" onChange={(x)=>{
-                        setPrice(x.target.value)
-                    }}>
-                    <Form.Label>Price</Form.Label>
-                    <Form.Control/>
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group className="mb-3" onChange={(x)=>{
-                            setCategory(x.target.value)
-                    }}>
-                    <Form.Label>Category</Form.Label>
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
-                            width:'100%',
-                            background:'white',
-                            borderRadius:'2px',
-                            borderColor: 'lightgrey',
-                            color: 'black',
-                            textAlign:'left',
+                            setName(x.target.value)
+                        }}>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control/>
+                        <Form.Text className="text-muted">
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group className="mb-3" onChange={(x)=>{
+                            setPrice(x.target.value)
+                        }}>
+                        <Form.Label>Price</Form.Label>
+                        <Form.Control/>
+                        <Form.Text className="text-muted">
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group className="mb-3" onChange={(x)=>{
+                                setCategory(x.target.value)
+                        }}>
+                        <Form.Label>Category</Form.Label>
+                        <Form.Text className="text-muted">
+                        </Form.Text>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic" style={{
+                                width:'100%',
+                                background:'white',
+                                borderRadius:'2px',
+                                borderColor: 'lightgrey',
+                                color: 'black',
+                                textAlign:'left',
+                            }}
+                            >
+                                {category}
+                            </Dropdown.Toggle>
+    
+                            <Dropdown.Menu
+                                onClick={(x)=>setCategory(x.target.firstChild.data)}
+                            >
+                                <Dropdown.Item href="#/action-1">Phone</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2">Laptop</Dropdown.Item>
+                                <Dropdown.Item href="#/action-3">Tablet</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </Form.Group>
+                    <Form.Group className="mb-3" onChange={(x)=>{
+                                setDescription(x.target.value)
+                        }}>
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control/>
+                        <Form.Text className="text-muted">
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Product Image</Form.Label>
+                            <input type='file' name='file' id='file'
+                            onChange={uploadImg}
+                            />
+                    </Form.Group>
+                    
+                          
+                        <Button style={{
+                            width:'50%',
                         }}
+                        onClick={uploadNewProduct}
                         >
-                            {category}
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu
-                            onClick={(x)=>setCategory(x.target.firstChild.data)}
-                        >
-                            <Dropdown.Item href="#/action-1">Phone</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Laptop</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Tablet</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </Form.Group>
-                <Form.Group className="mb-3" onChange={(x)=>{
-                            setDescription(x.target.value)
-                    }}>
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control/>
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                    <Form.Label>Product Image</Form.Label>
-                        <input type='file' name='file' id='file'
-                        onChange={uploadImg}
-                        />
-                </Form.Group>
-                
-                      
-                    <Button style={{
-                        width:'50%',
+                            Submit
+                        </Button>
+                    
+                </Form>
+                <img
+                    style={{
+                        aspectRatio:'16:9',
+                        width:'30rem'
                     }}
-                    onClick={uploadNewProduct}
-                    >
-                        Submit
-                    </Button>
-                
-            </Form>
-            <img
-                style={{
-                    aspectRatio:'16:9',
-                    width:'30rem'
-                }}
-                src={img}
-                alt='Product Image'
-            />
+                    src={img}
+                    alt='Product Image'
+                />
+            
+            
+            </>
+         );
+
+    }
+    if(userType==='none'){
+        return(<>
+            Loading...
+        </>)
+    }
         
-        
-        </>
-     );
 }
  
 export default UploadProduct;

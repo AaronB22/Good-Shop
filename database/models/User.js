@@ -18,6 +18,10 @@ const userSchema= new Schema({
     },
     cart:{
         type:[String]
+    },
+    userType:{
+        type:String,
+        trim:true
     }
 })
 

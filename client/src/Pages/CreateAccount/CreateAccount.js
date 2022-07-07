@@ -48,7 +48,8 @@ const CreateAccount = () => {
            const newUser={
                "name":name,
                "email":email,
-               "password":password
+               "password":password,
+               "userType":'normal'
            }
            const res= await fetch('/api/newUser',{
             method: "POST",
