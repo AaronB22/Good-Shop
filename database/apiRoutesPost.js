@@ -21,6 +21,7 @@ router.post('/api/createCategory',({body},res)=>{
 })
 
 router.post('/api/newUser',async({body},res)=>{
+    console.log('new User')
     try{
         const user= await User.find({}).where('email').equals(body.email)
         if(user.length===0){
