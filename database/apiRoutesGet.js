@@ -45,14 +45,7 @@ router.get('/api/getUser/:id', async (req, res)=>{
     const params= req.params.id
     try{
         const q= await User.find({}).where('_id').equals(params);
-        const returnUser=[{
-            '_id': q[0].id,
-            "email": q[0].email,
-            "name": q[0].name,
-            "cart": q[0].cart,
-            "userType": q[0].userType
-        }]
-        res.json(returnUser)
+        res.json(q)
     }
     catch(err){
         throw err
