@@ -10,8 +10,9 @@
 .FilterBar{
     background-color: whitesmoke !important;
     position: absolute;
-    height: 150px;
+    height: 160px;
     margin-bottom: 20px;
+    bottom:10vh !important;
 }
 
 .rangeFilter{
@@ -26,7 +27,7 @@
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-    top: 70px;
+    top: 40px;
     width: 20%;
     height: 2.5rem;
     border-right: 2px solid $primary-color;
@@ -65,4 +66,29 @@
     width: 90%;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+
+.FilterBarAm{
+    animation: FilterOut 1s ease-in;
+    animation-fill-mode: forwards;
+}
+.FilterBarIn{
+    animation: FilterIn 1s ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes FilterOut{
+    100%{
+        transform: translateY(78%);
+    }
+}
+
+@keyframes FilterIn{
+    0%{
+        transform: translateY(78%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
 }
