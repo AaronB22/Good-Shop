@@ -11,7 +11,7 @@ const ProductList = () => {
     const [hasData, setHasData]= useState(false)
     const [products, setProducts]= useState();
     const [loaded,setLoaded]= useState(false)
-    const [filter, setFilter]= useState('FilterBar')
+    const [filter, setFilter]= useState('collapseFilterBar')
     const [priceNumber, setPriceNumber]= useState(1600)
     const handlePriceFilter=(x)=>{
         setPriceNumber(x.target.value)
@@ -43,12 +43,11 @@ const ProductList = () => {
     },[category.category])
 
     const handleFilterClick=()=>{
-        if(filter==='FilterBar FilterBarAm'){
-            // setFilter('collapseFilterBar')
-            setFilter('FilterBar FilterBarIn')
+        if(filter==='FilterBar'){
+            setFilter('collapseFilterBar')
         }
         else{
-            setFilter('FilterBar FilterBarAm')
+            setFilter('FilterBar')
         }
     }
 
