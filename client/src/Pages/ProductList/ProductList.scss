@@ -12,12 +12,37 @@
     position: absolute;
     height: 150px;
     margin-bottom: 20px;
+    bottom:12vh !important;
 }
 
 .rangeFilter{
     margin-right: auto;
 }
 
+
+.FilterBarAm{
+    animation: FilterOut 1s ease-in;
+    animation-fill-mode: forwards;
+}
+.FilterBarIn{
+    animation: FilterIn 1s ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes FilterOut{
+    100%{
+        transform: translateY(78%);
+    }
+}
+
+@keyframes FilterIn{
+    0%{
+        transform: translateY(78%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
 .FilterTitle{
     background-color: $sec-color;
     font-size: 2rem;
@@ -66,3 +91,4 @@
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
