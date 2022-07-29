@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "6.15"
+    "node": "16.15"
   },
   "homepage": "http://localhost:5000/",
   "proxy": "http://localhost:5000/",
