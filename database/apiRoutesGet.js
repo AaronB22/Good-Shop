@@ -9,6 +9,7 @@ router.get('/api/getAllProdsByCat/:cat', async (req, res)=>{
     const params= req.params.cat
     try{
         const q= await Product.find({}).where('category').equals(params)
+        console.log(q)
         res.json(q)
     }
     catch(err){
