@@ -210,7 +210,7 @@ const NavBarComp = () => {
                 <FontAwesomeIcon icon={faBars}
                             className="collaspeBar fa-2xl"
                             onClick={()=>{setCollaspeState("open")
-                            console.log('open')
+                          
                         }}
                         />
                         <h3 onClick={()=>window.location.assign('/home')} className='homeClick'>
