@@ -51,8 +51,9 @@ const ProductList = () => {
             setFilter('FilterBar FilterBarAm')
         }
     }
-
+    console.log(products)
     if(loaded && hasData){
+        console.log(products)
         return ( 
         <>
         
