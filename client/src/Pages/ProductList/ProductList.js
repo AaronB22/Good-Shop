@@ -34,7 +34,6 @@ const ProductList = () => {
         else{
             fetch('/api/getAllProdsByCat/'+category.category)
             .then((res)=>{return(res.json())}).then((data)=>{
-                console.log(data)
                 setProducts(data)
                 setHasData(true)
                 setLoaded(true)
@@ -51,9 +50,7 @@ const ProductList = () => {
             setFilter('FilterBar FilterBarAm')
         }
     }
-    console.log(products)
     if(loaded && hasData){
-        console.log(products)
         return ( 
         <>
         
