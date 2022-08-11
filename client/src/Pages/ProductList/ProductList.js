@@ -9,10 +9,12 @@ const ProductList = () => {
     const cat= category.category
     const cap= cat.charAt(0).toUpperCase()+cat.slice(1)
     const [hasData, setHasData]= useState(false)
+    const [min, setMin]= useState(0);
+    const [max, setMax]= useState(2000)
     const [products, setProducts]= useState();
     const [loaded,setLoaded]= useState(false)
     const [filter, setFilter]= useState('FilterBar')
-    const [priceNumber, setPriceNumber]= useState(1600)
+    const [priceNumber, setPriceNumber]= useState(0)
     const handlePriceFilter=(x)=>{
         setPriceNumber(x.target.value)
     }
@@ -34,6 +36,27 @@ const ProductList = () => {
         else{
             fetch('/api/getAllProdsByCat/'+category.category)
             .then((res)=>{return(res.json())}).then((data)=>{
+
+                let tempMax=undefined;
+                let tempMin= undefined;
+                for(let i=0; i<data.length; i++){
+                    if( !tempMax || !tempMin){
+                        tempMin= data[i].price;
+                        tempMax= data[i].price;
+                    }
+                    if(data[i].price<tempMin){
+                        tempMin=data[i].price;
+                    }
+                    if(data[i].price>tempMax){
+                        tempMax=data[i].price;
+                    }
+                    setMax(tempMax)
+                    setMin(tempMin)
+                    setPriceNumber(tempMax)
+                }
+
+
+
                 setProducts(data)
                 setHasData(true)
                 setLoaded(true)
@@ -41,6 +64,7 @@ const ProductList = () => {
 
         }
     },[category.category])
+
 
     const handleFilterClick=()=>{
         if(filter==='FilterBar FilterBarAm'){
@@ -60,8 +84,9 @@ const ProductList = () => {
             >Max Price: <span className="priceNumber">${priceNumber}</span></Form.Label>
             <Form.Range
                 onChange={handlePriceFilter}
-                min='200'
-                max='3000'
+                min={min}
+                max={max}
+                value={priceNumber}
                 style={{
                     width:'60%',
                     marginRight:'auto',
@@ -76,7 +101,7 @@ const ProductList = () => {
             {cap}
         </Card.Text>
             {products.map(x=>{
-                if(x.price<priceNumber){
+                if(x.price<=priceNumber){
                     return(
                             <Product
                                 key={x._id}
