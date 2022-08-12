@@ -15,7 +15,6 @@ const NavBarComp = () => {
     const {userInfo, setUserInfo}= useContext(UserContext);
     const [searchQuery, setSearchQuery]= useState()
     const {logInStatus, setLogInStatus}= useContext(LogInAuthContext)
-    const [windowWidth, setWindowWidth]= useState(1800)
     const [navName,setNavName]=useState('Log In')
     const [blackOut, setBlackOut]= useState('blackoutClosed')
     const [show, setShow] = useState(false);
@@ -23,7 +22,6 @@ const NavBarComp = () => {
         if(userInfo){
             setNavName(userInfo.name)
         }
-        setWindowWidth(window.screen.width)
     },[userInfo])
 
     const handleClose = () => setShow(false);
