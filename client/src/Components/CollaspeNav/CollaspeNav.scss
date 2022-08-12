@@ -33,9 +33,15 @@
     text-align: center;
     font-size: 2rem;
 }
+
 .CollaspeBar{
     background: #943d24;
     height: 3.5rem;
+}
+
+.btNotLogIn{
+    background: #943d24;
+    height: 15vh;
 }
 .closeBtn{
     position: absolute;
@@ -50,6 +56,10 @@
 .catGroup{
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
+}
+.catHeader{
+    font-weight: 800;
+    font-family: cursive;
 }
 .accountBtn{
     margin-top: 5px;

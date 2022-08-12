@@ -105,7 +105,7 @@ const CollaspeNav = () => {
                 <>
                 <div className={collClass}>
                 <div className='collaspeBlock'>
-                    <div className='CollaspeBar'>
+                    <div className='btNotLogIn'>
                         <div className='blockTitle'>
                             Hey There, Sign In?
 
