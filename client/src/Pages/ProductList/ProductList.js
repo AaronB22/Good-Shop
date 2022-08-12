@@ -23,7 +23,25 @@ const ProductList = () => {
             fetch("/search/"+category.category).then(res=>{
                 return(res.json())
             }).then(data=>{
+                
                 if(data.length!==0){
+                    let tempMax=undefined;
+                    let tempMin= undefined;
+                    for(let i=0; i<data.length; i++){
+                        if( !tempMax || !tempMin){
+                            tempMin= data[i].price;
+                            tempMax= data[i].price;
+                        }
+                        if(data[i].price<tempMin){
+                            tempMin=data[i].price;
+                        }
+                        if(data[i].price>tempMax){
+                            tempMax=data[i].price;
+                        }
+                        setMax(tempMax)
+                        setMin(tempMin)
+                        setPriceNumber(tempMax)
+                    }
                     setProducts(data)
                     setHasData(true)
                 }
