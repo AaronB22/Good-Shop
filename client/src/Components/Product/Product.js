@@ -6,7 +6,8 @@ import {
     Button,
     Spinner,
     Row,
-    Col
+    Col,
+    Alert
     } from "react-bootstrap";
 import './Product.scss'
 import { LogInAuthContext } from "../../utils/LogInAuth";
@@ -17,13 +18,18 @@ const Product = (props) => {
     const {userInfo}= useContext(UserContext)
     const [img, setImg]= useState()
     const {logInStatus}=useContext(LogInAuthContext)
+    const [alertStatus, setAlertStatus]= useState(false)
     const [loaded, setLoaded]= useState(false)
     const handleWindowChange=(e)=>{
         window.location.assign('/product/'+props.product._id)
     }
     const handleAddToCart=async(e)=>{
         if(logInStatus){
-            alert('Added to Cart')
+            setAlertStatus(true)
+             setTimeout(()=>{
+                setAlertStatus(false)
+             }, 2000)
+            
             const newCart={
                 "_id":userInfo.id,
                 "email":userInfo.email,
@@ -38,6 +44,7 @@ const Product = (props) => {
                  'Content-Type': 'application/json',
                }
              } )
+           
 
         }
         if(!logInStatus){
@@ -64,6 +71,16 @@ const Product = (props) => {
             <Card className="prodcard"
                 key={props.product._id}
             >
+                {(()=>{
+                    if(alertStatus){
+                        return(
+                        <Alert className='cartAddAlert' variant="dark">
+                            Added To Cart!
+                        </Alert>
+
+                        )
+                    }
+                })()}
                 <div className="largeCard">
                     <Row className="largeCard">
                         <Card.Text className='prodHeader' onClick={handleWindowChange}>
