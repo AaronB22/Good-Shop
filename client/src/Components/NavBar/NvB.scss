@@ -141,6 +141,11 @@
     opacity: 50%;
     z-index: 5;
 }
+@media screen and (min-width: 1400px) {
+    .nvSmall{
+        display: none !important;
+    }
+}
 @media screen and (min-width:2500px) {
     .NvBar{
         height: 15rem;
@@ -224,8 +229,11 @@
     }
 }
 @media screen and ( max-width: 1400px) {
+    
+    .nvLarge{
+        display: none !important;
+    }
     .NvBar{
-       
         height: 4rem;
     }
     .searchBtn{

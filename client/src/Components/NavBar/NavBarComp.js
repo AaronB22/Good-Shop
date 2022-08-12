@@ -39,10 +39,10 @@ const NavBarComp = () => {
         setSearchQuery(e.target.value)
         
     }
-    if(windowWidth>1400){
-        return ( 
-            <>
-            <Navbar expand='lg' className="NvBar" onClick={()=>{
+
+    return(
+        <>
+            <Navbar expand='lg' className="NvBar nvLarge" onClick={()=>{
                  if(blackOut==='blackout'){
                     setBlackOut('closed')
                 }
@@ -200,13 +200,9 @@ const NavBarComp = () => {
                     }
                 }}
             ></div>
-            </>
-            );
-            
-        }
-        if(windowWidth<=1400){
-            return(
-            <Navbar expand='lg' className="NvBar">
+
+
+            <Navbar expand='lg' className="NvBar nvSmall">
                 <FontAwesomeIcon icon={faBars}
                             className="collaspeBar fa-2xl"
                             onClick={()=>{setCollaspeState("open")
@@ -244,8 +240,10 @@ const NavBarComp = () => {
                 <CollaspeNav />
 
             </Navbar>
-        )
-    }
+        
+        </>
+    );
+
 }
  
 export default NavBarComp;
