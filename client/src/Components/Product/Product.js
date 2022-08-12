@@ -75,7 +75,7 @@ const Product = (props) => {
                     if(alertStatus){
                         return(
                         <Alert className='cartAddAlert' variant="dark">
-                            Added To Cart!
+                           {props.product.name} was added to Cart!
                         </Alert>
 
                         )
