@@ -108,24 +108,7 @@ const Product = (props) => {
                                     />
                                 </Container>
                                 <Container className="TagCont" onClick={handleWindowChange}>
-                                <Row>
-                                        {tags.map((x, index)=>{
-
-                                            tagKey += JSON.stringify(index)
-
-                                            return(
-                                                <Col>
-                                                    <Tags
-                                                        tag={x}
-                                                        id={tagKey}
-                                                        key={tagKey}
-                                                    />
-                                                
-                                                </Col>
-                                            )
-                                        })}
-
-                                </Row>
+                              
                                 </Container>
                     
                         
