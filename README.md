@@ -23,6 +23,7 @@ How To Use App:
 
 
 Live Version:
+
     1.Open live version in your browser.
     2.Create An account:
         2.1 On screens 1400px<. To do so, go to the upper right corner, you will see "Log In". Click, than at the bottom Click "Create Account". Than fill out the forum.
