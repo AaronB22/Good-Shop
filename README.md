@@ -1,6 +1,6 @@
 # Welcome To Good Shop! #
 
-    This app is a ecommerce webesite demo project. In this app the user will be able to create an account that is saved to a MongoDB database.The user will be able to browse different catagories of products, as well as browse through products. The user can also search for items. The user can also use a price filter to change the view list in real time, no reload needed. The user can than add a product to a cart. The user can than go to the cart and see all items added to cart and the total cost of said items. The app is fully responsive. App will work from as small as 280px wide screens up to 4k screens. This app saves products to a MongoDB database, where all info of the product is store. Including the product img file. The app also always admins of the site to add more products.
+This app is a ecommerce webesite demo project. In this app the user will be able to create an account that is saved to a MongoDB database.The user will be able to browse different catagories of products, as well as browse through products. The user can also search for items. The user can also use a price filter to change the view list in real time, no reload needed. The user can than add a product to a cart. The user can than go to the cart and see all items added to cart and the total cost of said items. The app is fully responsive. App will work from as small as 280px wide screens up to 4k screens. This app saves products to a MongoDB database, where all info of the product is store. Including the product img file. The app also always admins of the site to add more products.
 
     Technology Used:
     1. MERN Stack
@@ -17,9 +17,10 @@
     8. Mongoose.js;
 
 
-    How To Use App:
-        Live Version:
-See [liveVersion](https://aaronb22goodshop.herokuapp.com/);    
+How To Use App:
+
+Live Version [liveVersion](https://aaronb22goodshop.herokuapp.com/); 
+    Live Version:
     1.Open live version in your browser.
     2.Create An account:
         2.1 On screens 1400px<. To do so, go to the upper right corner, you will see "Log In". Click, than at the bottom Click "Create Account". Than fill out the forum.
@@ -32,7 +33,7 @@ See [liveVersion](https://aaronb22goodshop.herokuapp.com/);
         5.1: Bigger screens: click the cart icon on the upper right corner.
         5.2: Smaller screens: click the hamburger menu again. Than there click of the cart link.
     
-    HOW TO USE LOCAL:
+HOW TO USE LOCAL:
         To use locally you must have a MongoDB local server setup. Also must have Node.js.
 
         1. Clone Repo.
