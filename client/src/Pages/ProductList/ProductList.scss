@@ -120,3 +120,23 @@
         bottom: 15vh !important;
     }
 }
+
+//iPad Air
+
+@media screen and (max-width: 820),  screen and (max-height: 1180px) {
+    .FilterBar{
+        bottom: 8vh !important;
+    }
+}
+
+//Surface
+@media screen and (max-width: 820),  screen and (max-height: 1180px) {
+    .FilterBar{
+        bottom: 8vh !important;
+    }
+}
+@media screen and (max-width: 540),  screen and (max-height:  720px) {
+    .FilterBar{
+        bottom: 13vh !important;
+    }
+}
