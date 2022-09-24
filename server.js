@@ -43,9 +43,7 @@ const storage = new GridFsStorage({
   url: mongoURI,
   options: { useUnifiedTopology: true },
   file: (req, file) => {
-    // this function runs every time a new file is created
     return new Promise((resolve, reject) => {
-      // use the crypto package to generate some random hex bytes
       crypto.randomBytes(16, (err, buf) => {
         if (err) {
           return reject(err);
@@ -64,24 +62,17 @@ const storage = new GridFsStorage({
 });
 const store = multer({
   storage,
-  // limit the size to 20mb for any files coming in
   limits: { fileSize: 20000000 },
-  // filer out invalid filetypes
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
 });
 function checkFileType(file, cb) {
-  // https://youtu.be/9Qzmri1WaaE?t=1515
-  // define a regex that includes the file types we accept
   const filetypes = /jpeg|jpg|png|gif/;
-  //check the file extention
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  // more importantly, check the mimetype
   const mimetype = filetypes.test(file.mimetype);
-  // if both are good then continue
   if (mimetype && extname) return cb(null, true);
-  // otherwise, return error message
+
   cb('filetype');
 }
 const uploadMiddleware = (req, res, next) => {
